@@ -40,4 +40,4 @@ for em in emission_vars:
 
 a = df[['Distance', 'Flow']]
 a = a.loc[a['Flow'] != 0]
-print("Distance: %0.3f" % a.corr())
+print("\nDistance: %0.3f" % a.corr().iloc[0,1])
