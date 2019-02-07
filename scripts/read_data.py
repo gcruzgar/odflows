@@ -37,3 +37,7 @@ for em in emission_vars:
     f_df = pd.concat([total_out, em_df], axis=1, join='inner')
     fc = f_df.corr()
     print("%s: %0.3f" % (em, fc.loc[em][0]))
+
+a = df[['Distance', 'Flow']]
+a = a.loc[a['Flow'] != 0]
+print("Distance: %0.3f" % a.corr())
