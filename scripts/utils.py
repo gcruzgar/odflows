@@ -4,6 +4,8 @@ import geopandas as gpd
 
 def uk_plot(shp_path, df, var_name, title):
 
+    print("\nGenerating plot...")
+        
     map_df = gpd.read_file(shp_path)
     merged = map_df.set_index("wd16nm").join(df[var_name]).fillna(value=0)
 
@@ -15,4 +17,3 @@ def uk_plot(shp_path, df, var_name, title):
     sm._A = []
     fig.colorbar(sm)
     merged.plot(column=str(var_name), cmap='OrRd', linewidth=0.3, edgecolor='0.8', ax=ax)
-    plt.show()
