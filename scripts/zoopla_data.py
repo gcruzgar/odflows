@@ -2,6 +2,8 @@
 import pandas as pd 
 import matplotlib.pyplot as plt 
 import numpy as np 
+import geopandas as gpd 
+from utils import uk_plot
 
 rentals = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t')
 sales = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t')    
@@ -21,3 +23,9 @@ sales_destination = pd.pivot_table(sales, values = sales_types, index = 'Destina
 
 rentals_origin = pd.pivot_table(rentals, values = rental_types, index = 'OriginWardName', aggfunc=np.sum) 
 rentals_destination = pd.pivot_table(rentals, values = rental_types, index = 'DestinationWardName', aggfunc=np.sum)   
+
+shp_path = "data/shapefiles/UK_Wards_2016.shp"
+df = sales_origin
+var_name = "NumberOfMoves"
+title = "Number of moves originating from each ward"
+uk_plot(shp_path, df, var_name, title)
