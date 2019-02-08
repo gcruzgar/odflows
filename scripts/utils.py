@@ -5,7 +5,7 @@ import geopandas as gpd
 def uk_plot(shp_path, df, var_name, title):
 
     print("\nGenerating plot...")
-        
+
     map_df = gpd.read_file(shp_path)
     merged = map_df.set_index("wd16nm").join(df[var_name]).fillna(value=0)
 
@@ -17,3 +17,12 @@ def uk_plot(shp_path, df, var_name, title):
     sm._A = []
     fig.colorbar(sm)
     merged.plot(column=str(var_name), cmap='OrRd', linewidth=0.3, edgecolor='0.8', ax=ax)
+
+def top_10(df, var_name, title):
+    
+    df_desc = df.sort_values(by=[var_name], ascending=False)
+    plt.figure()
+    plt.bar(df_desc.index[0:10], df_desc[var_name][0:10])
+    plt.ylabel("Frequency")
+    plt.xticks(fontsize=10)
+    plt.title(title)
