@@ -3,7 +3,7 @@ import argparse
 import numpy as np 
 import pandas as pd 
 import geopandas as gpd 
-from utils import uk_plot
+from utils import uk_plot, top_10
 import matplotlib.pyplot as plt 
 
 def main():
@@ -13,8 +13,8 @@ def main():
     #rentals = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t')
     sales = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t')    
 
-    #rentals.iloc[:,4:].sum()
-    #sales.iloc[:,4:].sum()  
+    #print(rentals.iloc[:,4:].sum())
+    print(sales.iloc[:,4:].sum())  
 
     sales_types = ['NumberOfMoves', 'MovesUnder250k', 'MovesOver250k', 
         'Terraced', 'Flat', 'SemiDetached', 'Detached',
@@ -41,6 +41,7 @@ def main():
         df = df_dict[key]
         title = key+' - '+var_name
         uk_plot(shp_path, df, var_name, title)
+        top_10(df,var_name, title)
     plt.show()
 
 if __name__ == "__main__":
