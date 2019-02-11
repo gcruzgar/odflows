@@ -21,7 +21,7 @@ def uk_plot(shp_path, df, var_name, title):
 def top_10(df, var_name, title):
     
     df_desc = df.sort_values(by=[var_name], ascending=False)
-    plt.figure()
+    plt.figure(figsize=[12,6])
     plt.bar(df_desc.index[0:10], df_desc[var_name][0:10])
     plt.ylabel("Frequency")
     plt.xticks(fontsize=10)
