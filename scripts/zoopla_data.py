@@ -38,8 +38,17 @@ def main():
         title = key+' - '+var_name
         uk_plot(shp_path, df, var_name, title)
         top_10(df,var_name, title)
-    plt.show()
 
+    if var_name != 'NumberOfMoves':
+        pc_sales_origin =  df_dict['sales_origin'].drop(columns=['NumberOfMoves']).div(df_dict['sales_origin']['NumberOfMoves'], axis=0)
+        pc_sales_destination = df_dict['sales_destination'].drop(columns=['NumberOfMoves']).div(df_dict['sales_destination']['NumberOfMoves'], axis=0)
+
+        uk_plot(shp_path, pc_sales_origin, var_name, 'sales_origin - '+var_name+' - net normalised')
+        uk_plot(shp_path, pc_sales_destination, var_name, 'sales_destination - '+var_name+' - net normalised')
+        #top_10(pc_sales_net,var_name, var_name+' (net normalised) - Top 10')
+
+    plt.show()
+    
     ##rentals
 
     #rentals = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t')
