@@ -24,6 +24,15 @@ def main():
 
     uk_plot(shp_path, sales_net, var_name, 'sales - '+var_name)
     top_10(sales_net,var_name, var_name+' (net) - Top 10')
+
+    if var_name != 'NumberOfMoves':
+        pc_sales_origin =  sales_origin.drop(columns=['NumberOfMoves']).div(sales_origin['NumberOfMoves'], axis=0)
+        pc_sales_destination = sales_destination.drop(columns=['NumberOfMoves']).div(sales_destination['NumberOfMoves'], axis=0)
+        pc_sales_net = pc_sales_destination - pc_sales_origin
+
+        uk_plot(shp_path, pc_sales_net, var_name, 'sales - '+var_name+' - net normalised')
+        top_10(pc_sales_net,var_name, var_name+' (net normalised) - Top 10')
+
     plt.show()
 
 if __name__ == "__main__":
