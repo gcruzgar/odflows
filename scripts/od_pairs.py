@@ -6,6 +6,19 @@ import geopandas as gpd
 from utils import uk_plot, top_10
 import matplotlib.pyplot as plt 
 
+def categ(df, cat):
+
+    cat_types = {
+        'beds': ['Beds1to3', 'Beds4Plus'], 
+        'dwel': ['Terraced', 'Flat', 'SemiDetached', 'Detached'], 
+        'price': ['MovesUnder250k', 'MovesOver250k']
+    }
+
+    cat_df = df[cat_types[cat]]
+
+    # for row in cat_df cat_df[cat][i] = larger cat. e.g. if 'MovesUnder250k' = 667 and 'MovesOver250k' = 1192 then cat = 'MovesUnder250k'.
+    return cat_df
+
 def main():
 
     var_name = args.var_name
@@ -25,9 +38,11 @@ def main():
 
     shp_path = "data/shapefiles/UK_Wards_2016.shp"
 
+    # raw - net
     uk_plot(shp_path, sales_net, var_name, 'net sales - '+var_name)
     top_10(sales_net,var_name, var_name+' (net) - Top 10')
 
+    # normalised
     if var_name != 'NumberOfMoves':
         pc_sales_origin =  sales_origin.drop(columns=['NumberOfMoves']).div(sales_origin['NumberOfMoves'], axis=0)
         pc_sales_destination = sales_destination.drop(columns=['NumberOfMoves']).div(sales_destination['NumberOfMoves'], axis=0)
@@ -35,6 +50,9 @@ def main():
 
         uk_plot(shp_path, pc_sales_net, var_name, 'sales - '+var_name+' - net normalised')
         top_10(pc_sales_net,var_name, var_name+' (net normalised) - Top 10')
+
+    # categorical
+
 
     plt.show()
 
