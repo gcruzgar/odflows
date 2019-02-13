@@ -26,3 +26,16 @@ def top_10(df, var_name, title):
     plt.ylabel("Frequency")
     plt.xticks(fontsize=10)
     plt.title(title)
+
+def categ_plot(shp_path, df, var_name, title):
+
+    print("\nGenerating plot...")
+    
+    map_df = gpd.read_file(shp_path)
+    merged = map_df.set_index("wd16nm").join(df[var_name]).fillna(value='no data available')
+
+    fig, ax = plt.subplots(1,1, figsize=(8,7))
+    ax.axis('off')
+    ax.set_title(title)
+
+    merged.plot(column=var_name, cmap='tab20c', categorical=True, legend=True, ax=ax)
