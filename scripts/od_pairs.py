@@ -3,21 +3,21 @@ import argparse
 import numpy as np 
 import pandas as pd 
 import geopandas as gpd 
-from utils import uk_plot, top_10
 import matplotlib.pyplot as plt 
+from utils import uk_plot, top_10, categ_plot
 
 def categ(df, cat):
 
     cat_types = {
         'beds': ['Beds1to3', 'Beds4Plus'], 
-        'dwel': ['Terraced', 'Flat', 'SemiDetached', 'Detached'], 
+        'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached'], 
         'price': ['MovesUnder250k', 'MovesOver250k']
     }
+    
+    # most common type in each ward
+    df[cat] = df[cat_types[cat]].idxmax(axis=1)
 
-    cat_df = df[cat_types[cat]]
-
-    # for row in cat_df cat_df[cat][i] = larger cat. e.g. if 'MovesUnder250k' = 667 and 'MovesOver250k' = 1192 then cat = 'MovesUnder250k'.
-    return cat_df
+    return df
 
 def main():
 
@@ -40,7 +40,7 @@ def main():
 
     # raw - net
     uk_plot(shp_path, sales_net, var_name, 'net sales - '+var_name)
-    top_10(sales_net,var_name, var_name+' (net) - Top 10')
+    #top_10(sales_net,var_name, var_name+' (net) - Top 10')
 
     # normalised
     if var_name != 'NumberOfMoves':
@@ -49,10 +49,12 @@ def main():
         pc_sales_net = pc_sales_destination - pc_sales_origin
 
         uk_plot(shp_path, pc_sales_net, var_name, 'sales - '+var_name+' - net normalised')
-        top_10(pc_sales_net,var_name, var_name+' (net normalised) - Top 10')
-
+        #top_10(pc_sales_net,var_name, var_name+' (net normalised) - Top 10')
+            
     # categorical
-
+    cat = args.c[0]
+    cat_df = categ(sales_origin, cat)
+    categ_plot(shp_path, cat_df, cat, 'Most frequent - '+cat)
 
     plt.show()
 
@@ -61,6 +63,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("var_name", type=str, nargs='?', default="NumberOfMoves",
         help="Variable to plot, e.g. 'NumberOfMoves' or 'Beds1to3'.")
+    parser.add_argument("-c", type=str, nargs=1, default="dwelling",
+        help="Category to plot, e.g. 'dwelling' or 'beds'.")
     args = parser.parse_args()
 
     main()
