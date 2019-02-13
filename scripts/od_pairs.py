@@ -20,9 +20,12 @@ def main():
     sales_destination = pd.pivot_table(sales, values = sales_types, index = 'DestinationWardName', aggfunc=np.sum)
     sales_net = sales_destination - sales_origin
 
+    print("\nMoves from origin: \n{}".format(sales_origin.sum()))
+    print("\nMoves to destination: \n{}".format(sales_destination.sum()))
+
     shp_path = "data/shapefiles/UK_Wards_2016.shp"
 
-    uk_plot(shp_path, sales_net, var_name, 'sales - '+var_name)
+    uk_plot(shp_path, sales_net, var_name, 'net sales - '+var_name)
     top_10(sales_net,var_name, var_name+' (net) - Top 10')
 
     if var_name != 'NumberOfMoves':
