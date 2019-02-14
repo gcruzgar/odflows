@@ -34,7 +34,10 @@ def categ_plot(shp_path, df, var_name, title):
     map_df = gpd.read_file(shp_path)
     merged = map_df.set_index("wd16nm").join(df[var_name]).fillna(value='no data available')
 
-    fig, ax = plt.subplots(1,1, figsize=(8,7))
+    # fig, ax = plt.subplots(1,1, figsize=(8,7))
+    # ax.axis('off')
+    # ax.set_title(title)
+    ax = plt.figure(figsize=(8,7))
     ax.axis('off')
     ax.set_title(title)
 
