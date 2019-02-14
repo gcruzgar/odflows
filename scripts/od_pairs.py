@@ -52,9 +52,11 @@ def main():
         #top_10(pc_sales_net,var_name, var_name+' (net normalised) - Top 10')
             
     # categorical
-    cat = args.c[0]
-    cat_df = categ(sales_origin, cat)
-    categ_plot(shp_path, cat_df, cat, 'Most frequent - '+cat)
+    if args.c:
+
+        cat = args.c[0]
+        cat_df = categ(sales_origin, cat)
+        categ_plot(shp_path, cat_df, cat, 'Most frequent - '+cat)
 
     plt.show()
 
@@ -63,7 +65,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("var_name", type=str, nargs='?', default="NumberOfMoves",
         help="Variable to plot, e.g. 'NumberOfMoves' or 'Beds1to3'.")
-    parser.add_argument("-c", type=str, nargs=1, default="dwelling",
+    parser.add_argument("-c", type=str, nargs=1,
         help="Category to plot, e.g. 'dwelling' or 'beds'.")
     args = parser.parse_args()
 
