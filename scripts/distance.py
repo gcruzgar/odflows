@@ -7,12 +7,15 @@ map_df = gpd.read_file("data/shapefiles/GB_Wards_2015.shp")                     
 
 #merged = map_df.set_index("wd15nm").join(sales.set_index('OriginWardName')).dropna(subset=['NumberOfMoves'])  # data + shp
 
-a = 'E05001526'
-ag = map_df.loc[map_df['wd15cd']==a, 'geometry'] # find geometry of first ward
-a_cen = ag.centroid                              # centre point of ward
+a = 'E05004153'
+ai = map_df.loc[map_df['wd15cd']==a].index   # find index of first ward
+ma = map_df['geometry'][ai.item()]           # find geometry of first ward
+mac = ma.centroid                            # centre point of first ward
 
-b = 'E05000026'
-bg = map_df.loc[map_df['wd15cd']==b, 'geometry'] # find geometry of second ward
-b_cen = bg.centroid                              # centre point of ward
+b = 'E05009501'
+bi = map_df.loc[map_df['wd15cd']==b].index   # find index of second ward
+mb = map_df['geometry'][bi.item()]           # find geometry of second ward
+mbc = mb.centroid                            # centre point of second ward
 
-#ab_dist = ag.distance(bg)                        # distance between wards (not working?)
+ab_dist = ma.distance(mb)                    # distance between wards 
+print(ab_dist)
