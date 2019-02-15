@@ -36,7 +36,7 @@ def main():
     print("\nMoves from origin: \n{}".format(sales_origin.sum()))
     print("\nMoves to destination: \n{}".format(sales_destination.sum()))
 
-    shp_path = "data/shapefiles/UK_Wards_2016.shp"
+    shp_path = "data/shapefiles/GB_Wards_2015.shp"
 
     # raw - net
     uk_plot(shp_path, sales_net, var_name, 'net sales - '+var_name)

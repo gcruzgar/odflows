@@ -30,14 +30,14 @@ def main():
     #b = sales.loc[sales['DestinationWardName'] == "Epping Hemnall"]
 
     # Plots
-    shp_path = "data/shapefiles/UK_Wards_2016.shp"
+    shp_path = "data/shapefiles/GB_Wards_2015.shp"
 
     for key in df_dict:
         
         df = df_dict[key]
         title = key+' - '+var_name
         uk_plot(shp_path, df, var_name, title)
-        top_10(df,var_name, title)
+        #top_10(df,var_name, title)
 
     if var_name != 'NumberOfMoves':
         pc_sales_origin =  df_dict['sales_origin'].drop(columns=['NumberOfMoves']).div(df_dict['sales_origin']['NumberOfMoves'], axis=0)
