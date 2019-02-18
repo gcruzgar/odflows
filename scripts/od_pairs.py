@@ -22,40 +22,53 @@ def categ(df, cat):
 def main():
 
     var_name = args.var_name
+    
+    if args.r:
+        print("Loading rental data...")
+        df = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t').dropna(subset=['DestinationWardCode'])
+        df.rename(index=str, columns={'NumberOfRentals': 'Total'}, inplace=True)
+        df_types = ['Total', 'RentUnder250', 'RentOver250',
+            'Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow', 'PropertyTypeUnknown', 
+            'Beds1to3', 'Beds4Plus']
+    else:
+        print("Loading sales data...")
+        df = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t').dropna(subset=['DestinationWardCode'])
+        df.rename(index=str, columns={'NumberOfMoves': 'Total'}, inplace=True)   
+        df_types = ['Total', 'MovesUnder250k', 'MovesOver250k', 
+            'Terraced', 'Flat', 'SemiDetached', 'Detached',
+            'Beds1to3', 'Beds4Plus']
 
-    sales = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t').dropna(axis=0, how='any')
+    # Note: dropna is used to only keep available od pairs
 
-    sales_types = ['NumberOfMoves', 'MovesUnder250k', 'MovesOver250k', 
-        'Terraced', 'Flat', 'SemiDetached', 'Detached',
-        'Beds1to3', 'Beds4Plus']
+    df_dict = {
+        'df_origin': pd.pivot_table(df, values = df_types, index = 'OriginWardName', aggfunc=np.sum),
+        'df_destination': pd.pivot_table(df, values = df_types, index = 'DestinationWardName', aggfunc=np.sum),
+    }
+    df_dict['df_net'] = df_dict['df_destination'] - df_dict['df_origin']
 
-    sales_origin = pd.pivot_table(sales, values = sales_types, index = 'OriginWardName', aggfunc=np.sum)
-    sales_destination = pd.pivot_table(sales, values = sales_types, index = 'DestinationWardName', aggfunc=np.sum)
-    sales_net = sales_destination - sales_origin
-
-    print("\nMoves from origin: \n{}".format(sales_origin.sum()))
-    print("\nMoves to destination: \n{}".format(sales_destination.sum()))
+    print("\nMoves from origin: \n{}".format(df_dict['df_origin'].sum()))
+    print("\nMoves to destination: \n{}".format(df_dict['df_destination'].sum()))
 
     shp_path = "data/shapefiles/GB_Wards_2015.shp"
 
     # raw - net
-    uk_plot(shp_path, sales_net, var_name, 'net sales - '+var_name)
-    #top_10(sales_net,var_name, var_name+' (net) - Top 10')
+    uk_plot(shp_path, df_dict['df_net'], var_name, 'net df - '+var_name)
+    #top_10(df_net,var_name, var_name+' (net) - Top 10')
 
     # normalised
-    if var_name != 'NumberOfMoves':
-        pc_sales_origin =  sales_origin.drop(columns=['NumberOfMoves']).div(sales_origin['NumberOfMoves'], axis=0)
-        pc_sales_destination = sales_destination.drop(columns=['NumberOfMoves']).div(sales_destination['NumberOfMoves'], axis=0)
-        pc_sales_net = pc_sales_destination - pc_sales_origin
+    if var_name != 'Total':
+        pc_df_origin =  df_dict['df_origin'].drop(columns=['Total']).div(df_dict['df_origin']['Total'], axis=0)
+        pc_df_destination = df_dict['df_destination'].drop(columns=['Total']).div(df_dict['df_destination']['Total'], axis=0)
+        pc_df_net = pc_df_destination - pc_df_origin
 
-        uk_plot(shp_path, pc_sales_net, var_name, 'sales - '+var_name+' - net normalised')
-        #top_10(pc_sales_net,var_name, var_name+' (net normalised) - Top 10')
+        uk_plot(shp_path, pc_df_net, var_name, 'df - '+var_name+' - net normalised')
+        #top_10(pc_df_net,var_name, var_name+' (net normalised) - Top 10')
             
     # categorical
     if args.c:
 
         cat = args.c[0]
-        cat_df = categ(sales_origin, cat)
+        cat_df = categ(df_dict['df_origin'], cat)
         categ_plot(shp_path, cat_df, cat, 'Most frequent - '+cat)
 
     plt.show()
@@ -63,10 +76,12 @@ def main():
 if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("var_name", type=str, nargs='?', default="NumberOfMoves",
-        help="Variable to plot, e.g. 'NumberOfMoves' or 'Beds1to3'.")
+    parser.add_argument("var_name", type=str, nargs='?', default="Total",
+        help="Variable to plot, e.g. 'Total' or 'Beds1to3'.")
     parser.add_argument("-c", type=str, nargs=1,
         help="Category to plot, e.g. 'dwelling' or 'beds'.")
+    parser.add_argument("-r", action='store_true',
+        help="use rental data.")
     args = parser.parse_args()
 
     main()
