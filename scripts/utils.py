@@ -39,3 +39,31 @@ def categ_plot(shp_path, df, var_name, title):
     ax.set_title(title)
 
     merged.plot(column=var_name, cmap='tab20c', categorical=True, legend=True, ax=ax)
+
+def ward_distance(df, map_df):
+    """
+    Calculate the distance (as the crow flies) between ward centroids.
+    Note: this requires a shapefile that contains all wards present in df (UK).
+    """
+    print("Calculating distances...")
+
+    dist_list = []
+    for i in df.index:
+
+        a = df['OriginWardCode'][i]                 # ward code
+        ai = map_df.loc[map_df['wd16cd']==a].index  # find index of first ward
+        ma = map_df['geometry'][ai.item()]          # find geometry of first ward
+        mac = ma.centroid                           # centre point of first ward
+
+        b = df['DestinationWardCode'][i]            # ward code
+        bi = map_df.loc[map_df['wd16cd']==b].index  # find index of second ward
+        mb = map_df['geometry'][bi.item()]          # find geometry of second ward       
+        mbc = mb.centroid                           # centre point of second ward
+
+        ab = mac.distance(mbc)                      # distance between centroids
+        dist_list.append(ab)             
+
+    #df['distance'] = dist_list
+    #df.to_csv("data/rentals_and_distance.csv")
+
+    return dist_list
