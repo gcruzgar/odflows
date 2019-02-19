@@ -6,14 +6,21 @@ import geopandas as gpd
 import matplotlib.pyplot as plt 
 from utils import uk_plot, top_10, categ_plot
 
-def categ(df, cat):
+def categ(df, cat, r=False):
 
-    cat_types = {
-        'beds': ['Beds1to3', 'Beds4Plus'], 
-        'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached'], 
-        'price': ['MovesUnder250k', 'MovesOver250k']
-    }
-    
+    if r == False:
+        cat_types = {
+            'beds': ['Beds1to3', 'Beds4Plus'], 
+            'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached'], 
+            'price': ['MovesUnder250k', 'MovesOver250k']
+        }
+    else:
+        cat_types = {
+            'beds': ['Beds1to3', 'Beds4Plus'], 
+            'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow'], 
+            'price': ['RentUnder250', 'RentOver250']
+        }
+
     # most common type in each ward
     df[cat] = df[cat_types[cat]].idxmax(axis=1)
 
@@ -24,6 +31,7 @@ def main():
     var_name = args.var_name
     
     if args.r:
+        r=True
         print("Loading rental data...")
         df = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t').dropna(subset=['DestinationWardCode'])
         df.rename(index=str, columns={'NumberOfRentals': 'Total'}, inplace=True)
@@ -68,7 +76,7 @@ def main():
     if args.c:
 
         cat = args.c[0]
-        cat_df = categ(df_dict['df_origin'], cat)
+        cat_df = categ(df_dict['df_origin'], cat, r)
         categ_plot(shp_path, cat_df, cat, 'Most frequent - '+cat)
 
     plt.show()
