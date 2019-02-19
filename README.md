@@ -2,21 +2,21 @@
 
 Exploratory analysis of dwelling rentals and sales in England and Wales.
 
-|Property listings  |Number of Sales  |Number of Rentals| 
-|-------------------|:---------------:|:---------------:| 
-|Total              | 1828646         |  1204913        | 
-|MovesUnder250k     | 1198034 (65.5%) |   820210 (68.1%)|
-|MovesOver250k      |  630612 (34.5%) |   376770 (31.3%)|
-|Terraced           |  533248 (29.2%) |   275711 (22.9%)|
-|Flat               |  362865 (19.8%) |   511854 (42.5%)|
-|SemiDetached       |  482237 (26.4%) |   136376 (11.3%)|
-|Detached           |  450296 (24.6%) |    85247 (7.1%) |
-|Bungalow           |       0 (0%)    |    29977 (2.5%) |
-|PropertyTypeUnknown|       0 (0%)    |   165748 (13.8%)|
-|Beds1to3           |  745708 (40.8%) |  1012098 (84.0%)|
-|Beds4Plus          |  198778 (10.9%) |   154832 (12.9%)|
+|Property listings  |Number of Sales    |Number of Rentals | 
+|-------------------|:-----------------:|:----------------:| 
+|Total              | 1,828,646         | 1,204,913        | 
+|MovesUnder250k     | 1,198,034 (65.5%) |   820,210 (68.1%)|
+|MovesOver250k      |   630,612 (34.5%) |   376,770 (31.3%)|
+|Terraced           |   533,248 (29.2%) |   275,711 (22.9%)|
+|Flat               |   362,865 (19.8%) |   511,854 (42.5%)|
+|SemiDetached       |   482,237 (26.4%) |   136,376 (11.3%)|
+|Detached           |   450,296 (24.6%) |    85,247 (7.1%) |
+|Bungalow           |         0 (0%)    |    29,977 (2.5%) |
+|PropertyTypeUnknown|         0 (0%)    |   165,748 (13.8%)|
+|Beds1to3           |   745,708 (40.8%) | 1,012,098 (84.0%)|
+|Beds4Plus          |   198,778 (10.9%) |   154,832 (12.9%)|
 
-Approximately 23% of records provided a forwarding postcodes, therefore it is possible to obtain origin-destination pairs for 417219 households sold (145885 rentals). However, this will heavily bias the data, especially since forwarding is a paid service. The differences between properties listed and those with forwarding postcode can be seen below:
+Approximately 23% of records provided a forwarding postcodes, therefore it is possible to obtain origin-destination pairs for 417,219 households sold (145,885 rentals). However, this will heavily bias the data, especially since forwarding is a paid service. The differences between properties listed and those with forwarding postcode can be seen below:
 
 | OD pairs          | Sales          | Rent           |
 |-------------------|:--------------:|:--------------:|
