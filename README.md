@@ -27,7 +27,7 @@ Approximately 23% of records provided a forwarding postcodes, therefore it is po
 |SemiDetached       | 29.9% (+3.5%)  | 14.6% (+3.3%)  |
 |Detached           | 31.9% (+7.3%)  | 11.6% (+4.5%)  |
 |Bungalow           |    0% (+0%)    |  3.6% (+1.1%)  |
-|PropertyTypeUnknown|    0% (+0%)    | 15.6% (1.8+%)  |
+|PropertyTypeUnknown|    0% (+0%)    | 15.6% (+1.8%)  |
 |Beds1to3           | 44.9% (+4.1%)  | 83.7% (-0.3%)  |
 |Beds4Plus          | 19.8% (+8.9%)  | 14.7% (+1.8%)  |
 
