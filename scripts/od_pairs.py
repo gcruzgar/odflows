@@ -39,6 +39,7 @@ def main():
             'Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow', 'PropertyTypeUnknown', 
             'Beds1to3', 'Beds4Plus']
     else:
+        r=False
         print("Loading sales data...")
         df = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t').dropna(subset=['DestinationWardCode'])
         df.rename(index=str, columns={'NumberOfMoves': 'Total'}, inplace=True)   
