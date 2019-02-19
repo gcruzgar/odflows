@@ -52,9 +52,14 @@ To check: numbers don't match totals. Small errors expected in % due to rounding
 **Figure 6.** Most common number of bedrooms per household rented in each ward.
 
 Average distance between origin and destination for each type of sale (in km):
-|Terraced  |Flat  |SemiDetached  |Detached  |
-|----------|------|--------------|----------|
-|45.01     |45.27 |51.80         |62.90     |
+
+| Average Distance (km) | Sales | Rentals|
+|-----------------------|:------|:------:|
+|Terraced               | 45.01 | 42.51  |  
+|Flat                   | 45.27 | 42.92  |
+|SemiDetached           | 51.80 | 41.62  |
+|Detached               | 62.90 | 47.49  |
+|Bungalow               | na    | 47.29  |
 
 ![rural-urban_split](img/rural_urban_split.png)    
 **Figure 7.** ONS rural urban classification by ward - 2011 census.
