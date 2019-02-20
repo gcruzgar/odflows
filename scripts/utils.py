@@ -67,3 +67,25 @@ def ward_distance(df, map_df):
     #df.to_csv("data/rentals_and_distance.csv")
 
     return dist_list
+
+def ru_class(remap=True):
+    """rural/urban classification of wards according to 2011 ONS census"""
+
+    rural_urban = pd.read_csv("data/Rural_Urban_Classification_2011_of_Wards_in_England_and_Wales.csv")
+    #print(rural_urban['RUC11'].value_counts())
+
+    ru_map = {
+        'Rural village and dispersed': 'Rural', 'Rural village and dispersed in a sparse setting': 'Rural', 
+        'Rural town and fringe': 'Rural', 'Rural town and fringe in a sparse setting': 'Rural',
+        'Urban major conurbation':'Urban', 'Urban minor conurbation':'Urban',
+        'Urban city and town':'Urban', 'Urban city and town in a sparse setting': 'Urban'
+    }
+    if remap == True:
+        rural_urban['RUC11'].replace(ru_map, inplace=True)
+
+    # plot
+    #shp_path = "data/shapefiles/GB_Wards_2015.shp"
+    #categ_plot(shp_path, rural_urban.set_index('WD11NM'), 'RUC11', 'Rural/Urban split - 2011')
+    #plt.show()
+
+    return rural_urban
