@@ -3,6 +3,7 @@ import argparse
 import pandas as pd 
 import geopandas as gpd 
 import matplotlib.pyplot as plt 
+from utils import ru_class
 
 def main():
 
@@ -11,20 +12,25 @@ def main():
         df_types = {
             'beds': ['Beds1to3', 'Beds4Plus'], 
             'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow'], 
-            'price': ['RentUnder250', 'RentOver250']
+            'price': ['RentUnder250', 'RentOver250'],
+            'RUC11': ['Rural', 'Urban']
         }
     else:
         df = pd.read_csv("data/sales_and_distance.csv", index_col=0)
         df_types = {
             'beds': ['Beds1to3', 'Beds4Plus'], 
             'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached'], 
-            'price': ['MovesUnder250k', 'MovesOver250k']
+            'price': ['MovesUnder250k', 'MovesOver250k'],
+            'RUC11': ['Rural', 'Urban']
         }
 
     typ = args.c[0]
     print("Category: %s" % typ)
     # most common type in each ward
-    df['Class'] = df[df_types[typ]].idxmax(axis=1)
+    if typ != 'RUC11':
+        df['Class'] = df[df_types[typ]].idxmax(axis=1)
+    else:
+        df['Class'] = ru_class()['RUC11']
 
     # filter by category
     d = {}
@@ -41,7 +47,7 @@ if __name__ == "__main__":
     parser.add_argument("-r", action='store_true',
         help="use rental data.")
     parser.add_argument("-c", type=str, nargs=1, default=['dwelling'], 
-        help="Category to plot: 'beds', 'dwelling' or 'price'.")
+        help="Category to plot: 'beds', 'dwelling', 'price' or 'RUC11'.")
     args = parser.parse_args()
 
     main()
