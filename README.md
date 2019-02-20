@@ -2,8 +2,10 @@
 
 Exploratory analysis of dwelling rentals and sales in England and Wales.
 
+Number of sales and rentals in dataset, percentage of total in brackets:
+
 |Property listings  |Number of Sales    |Number of Rentals | 
-|-------------------|:-----------------:|:----------------:| 
+|-------------------|------------------:|-----------------:| 
 |Total              | 1,828,646         | 1,204,913        | 
 |MovesUnder250k     | 1,198,034 (65.5%) |   820,210 (68.1%)|
 |MovesOver250k      |   630,612 (34.5%) |   376,770 (31.3%)|
@@ -16,10 +18,10 @@ Exploratory analysis of dwelling rentals and sales in England and Wales.
 |Beds1to3           |   745,708 (40.8%) | 1,012,098 (84.0%)|
 |Beds4Plus          |   198,778 (10.9%) |   154,832 (12.9%)|
 
-Approximately 23% of records provided a forwarding postcodes, therefore it is possible to obtain origin-destination pairs for 417,219 households sold (145,885 rentals). However, this will heavily bias the data, especially since forwarding is a paid service. The differences between properties listed and those with forwarding postcode can be seen below:
+Approximately 23% of records provided a forwarding postcodes, therefore it is possible to obtain origin-destination pairs for 417,219 households sold (145,885 rentals). However, this will heavily bias the data, especially since forwarding is a paid service. The differences between properties listed and those with forwarding postcode can be seen below (percentage change from total in brackets):
 
 | OD pairs          | Sales          | Rent           |
-|-------------------|:--------------:|:--------------:|
+|-------------------|---------------:|---------------:|
 |MovesUnder250k     | 54.8% (-10.7%) | 35.5% (-32.6%) | 
 |MovesOver250k      | 45.2% (+10.7%) | 64.0% (+32.7%) | 
 |Terraced           | 28.6% (-0.6%)  | 21.7% (+1.2%)  | 
@@ -53,13 +55,17 @@ To check: numbers don't match totals. Small errors expected in % due to rounding
 
 Average distance between origin and destination for each type of sale (in km):
 
-| Average Distance (km) | Sales | Rentals|
-|-----------------------|:------|:------:|
-|Terraced               | 45.01 | 42.51  |  
-|Flat                   | 45.27 | 42.92  |
-|SemiDetached           | 51.80 | 41.62  |
-|Detached               | 62.90 | 47.49  |
-|Bungalow               | na    | 47.29  |
+| Average Distance (km) | Sales | Rentals |
+|-----------------------|------:|--------:|
+|Terraced               | 45.01 |  42.51  |  
+|Flat                   | 45.27 |  42.92  |
+|SemiDetached           | 51.80 |  41.62  |
+|Detached               | 62.90 |  47.49  |
+|Bungalow               | na    |  47.29  |
+|Price Under 250(k for sales) | 45.31 |  42.79  |
+|Price Over 250(k for sales)  | 60.70 |  44.12  |
+|Bedrooms 1-3           | 51.34 | 42.22   |
+|Bedrooms 4 or more     | 56.76 | 50.19   |
 
 ![rural-urban_split](img/rural_urban_split.png)    
 **Figure 7.** ONS rural urban classification by ward - 2011 census.
