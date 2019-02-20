@@ -88,7 +88,7 @@ if __name__ == "__main__":
     parser.add_argument("var_name", type=str, nargs='?', default="Total",
         help="Variable to plot, e.g. 'Total' or 'Beds1to3'.")
     parser.add_argument("-c", type=str, nargs=1,
-        help="Category to plot, e.g. 'dwelling' or 'beds'.")
+        help="Category to plot: 'beds', 'dwelling' or 'price'.")
     parser.add_argument("-r", action='store_true',
         help="use rental data.")
     args = parser.parse_args()
