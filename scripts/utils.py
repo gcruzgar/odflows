@@ -88,4 +88,8 @@ def ru_class(remap=True):
     #categ_plot(shp_path, rural_urban.set_index('WD11NM'), 'RUC11', 'Rural/Urban split - 2011')
     #plt.show()
 
+    # merge with df
+    #b = df.merge(rural_urban[['WD11CD','RUC11']], left_on='OriginWardCode', right_on=['WD11CD'], how='left')
+    #b.to_csv("data/rentals_distance_ru.csv")
+
     return rural_urban
