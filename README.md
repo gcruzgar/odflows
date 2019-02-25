@@ -62,8 +62,8 @@ Average distance between origin and destination for each type of sale (in km):
 |SemiDetached           | 51.80 |  41.62  |
 |Detached               | 62.90 |  47.49  |
 |Bungalow               | na    |  47.29  |
-|Price Under 250(k for sales) | 45.31 |  42.79  |
-|Price Over 250(k for sales)  | 60.70 |  44.12  |
+|Price Under 250 (k for sales) | 45.31 |  42.79  |
+|Price Over 250 (k for sales)  | 60.70 |  44.12  |
 |Bedrooms 1-3           | 51.34 | 42.22   |
 |Bedrooms 4 or more     | 56.76 | 50.19   |
 |Rural                  | 53.56 | 44.92   |
@@ -71,3 +71,18 @@ Average distance between origin and destination for each type of sale (in km):
 
 ![rural-urban_split](img/rural_urban_split.png)    
 **Figure 7.** ONS rural urban classification by ward - 2011 census.
+
+Correlation of moves with distance:       
+
+|Number of Moves     | -0.160 | -0.150 | 
+|Price Under 250 (k for sales)  | -0.152 | -0.112 | 
+|Price Over 250 (k for sales)   | -0.091 | -0.074 | 
+|Terraced            | -0.132 | -0.083 | 
+|Flat                | -0.094 | -0.075 | 
+|SemiDetached        | -0.124 | -0.071 | 
+|Detached            | -0.089 | -0.041 | 
+|Bungalow            |     na | -0.026 | 
+|Beds1to3            | -0.145 | -0.142 | 
+|Beds4Plus           | -0.095 | -0.052 | 
+
+Overall, there is a negative correlation between moves and distance. People are less likely to buy or rent if the destination is further away. However, these correlations are quite weak.
