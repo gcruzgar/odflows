@@ -66,8 +66,8 @@ Average distance between origin and destination for each type of sale (in km):
 |Price Over £250 (k for sales)     | 60.70 |  44.12  |
 |Bedrooms 1-3           | 51.34 | 42.22   |
 |Bedrooms 4 or more     | 56.76 | 50.19   |
-|Rural                  | 53.56 | 44.92   |
-|Urban                  | 53.36 | 44.32   |
+|Rural                  | 56.64 | 44.30   |
+|Urban                  | 49.75 | 42.21   |
 
 ![rural-urban_split](img/rural_urban_split.png)    
 **Figure 7.** ONS rural urban classification by ward - 2011 census.

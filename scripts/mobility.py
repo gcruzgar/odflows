@@ -30,7 +30,9 @@ def main():
     if typ != 'RUC11':
         df['Class'] = df[df_types[typ]].idxmax(axis=1)
     else:
-        df['Class'] = ru_class()['RUC11']
+        rural_urban = ru_class()
+        df = df.merge(rural_urban[['WD11CD','RUC11']], left_on='OriginWardCode', right_on=['WD11CD'], how='left')
+        df.rename(index=str, columns={'RUC11': 'Class'}, inplace=True)
 
     # filter by category
     d = {}
