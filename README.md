@@ -7,8 +7,8 @@ Number of sales and rentals in dataset, percentage of total in brackets:
 |Property listings   |Number of Sales    |Number of Rentals | 
 |--------------------|------------------:|-----------------:| 
 |Total               | 1,828,646         | 1,204,913        | 
-|MovesUnder250(k for sales) | 1,198,034 (65.5%) |   820,210 (68.1%)|
-|MovesOver250(k for sales)  |   630,612 (34.5%) |   376,770 (31.3%)|
+|Moves Under £250(k for sales) | 1,198,034 (65.5%) |   820,210 (68.1%)|
+|Moves Over £250(k for sales)  |   630,612 (34.5%) |   376,770 (31.3%)|
 |Terraced            |   533,248 (29.2%) |   275,711 (22.9%)|
 |Flat                |   362,865 (19.8%) |   511,854 (42.5%)|
 |SemiDetached        |   482,237 (26.4%) |   136,376 (11.3%)|
@@ -18,7 +18,7 @@ Number of sales and rentals in dataset, percentage of total in brackets:
 |Beds1to3            |   745,708 (40.8%) | 1,012,098 (84.0%)|
 |Beds4Plus           |   198,778 (10.9%) |   154,832 (12.9%)|
 
-Approximately 23% of records provided a forwarding postcodes, therefore it is possible to obtain origin-destination pairs for 417,219 households sold (145,885 rentals). However, this will heavily bias the data, especially since forwarding is a paid service. The differences between properties listed and those with forwarding postcode can be seen below (percentage change from total in brackets):
+Approximately 23% of records provided a forwarding postcode, therefore it is possible to obtain origin-destination pairs for 417,219 households sold (145,885 rentals). However, this will heavily bias the data, especially since forwarding is a paid service. The differences between properties listed and those with forwarding postcode can be seen below (percentage change from total in brackets):
 
 | OD pairs          | Sales          | Rent           |
 |-------------------|---------------:|---------------:|
@@ -35,7 +35,7 @@ Approximately 23% of records provided a forwarding postcodes, therefore it is po
 
 To check: numbers don't match totals. Small errors expected in % due to rounding but raw numbers dont add up. Large discrepancy in bedroom information for sales.
 
-As expected, reducing the data to households with a forwarding service favours more expensive moves. The number of flats in the data also reduces significantly (10%).
+As expected, reducing the data to households with a forwarding service favours more expensive moves. The number of flats in the data also reduces significantly (10%). The changes are larger for rentals than sales, but these are relevant in both cases.
 
 We can compare data between wards to obtain general trends in the data. For example, in figure (1) we can see the most frequent type of dwelling sold in each ward. Although terraced houses are the most common property sold across the UK, these concentrate mainly in urban areas whilst most wards have a higher number of detached properties sold. It is interesting to note that Greater London has a significant number of flats being sold, being more common that terraced.
 
@@ -81,7 +81,7 @@ Average distance between origin and destination varies for each type of sale:
 
 The most interesting differences are that detached property sales have a much greater mobility than other types, over 10km difference. More expensive sales also have a greater mobility thatn cheaper ones (around 15km difference) and rural areas move more on average than urban ones.
 
-It is sueful to look at the rural urban classification of wards stated by the ONS (see figure 7). This gives insight into some of the patterns seen in previous figures because cities behave differently to rural areas.
+It is useful to look at the rural urban classification of wards stated by the ONS (see figure 7). This gives insight into some of the patterns seen in previous figures because cities behave differently to rural areas.
 
 ![rural-urban_split](img/rural_urban_split.png)    
 **Figure 7.** ONS rural urban classification by ward - 2011 census.
