@@ -4,19 +4,19 @@ Exploratory analysis of dwelling rentals and sales in England and Wales.
 
 Number of sales and rentals in dataset, percentage of total in brackets:
 
-|Property listings  |Number of Sales    |Number of Rentals | 
-|-------------------|------------------:|-----------------:| 
-|Total              | 1,828,646         | 1,204,913        | 
-|MovesUnder250k     | 1,198,034 (65.5%) |   820,210 (68.1%)|
-|MovesOver250k      |   630,612 (34.5%) |   376,770 (31.3%)|
-|Terraced           |   533,248 (29.2%) |   275,711 (22.9%)|
-|Flat               |   362,865 (19.8%) |   511,854 (42.5%)|
-|SemiDetached       |   482,237 (26.4%) |   136,376 (11.3%)|
-|Detached           |   450,296 (24.6%) |    85,247 (7.1%) |
-|Bungalow           |         0 (0%)    |    29,977 (2.5%) |
-|PropertyTypeUnknown|         0 (0%)    |   165,748 (13.8%)|
-|Beds1to3           |   745,708 (40.8%) | 1,012,098 (84.0%)|
-|Beds4Plus          |   198,778 (10.9%) |   154,832 (12.9%)|
+|Property listings   |Number of Sales    |Number of Rentals | 
+|--------------------|------------------:|-----------------:| 
+|Total               | 1,828,646         | 1,204,913        | 
+|MovesUnder250(k for sales) | 1,198,034 (65.5%) |   820,210 (68.1%)|
+|MovesOver250(k for sales)  |   630,612 (34.5%) |   376,770 (31.3%)|
+|Terraced            |   533,248 (29.2%) |   275,711 (22.9%)|
+|Flat                |   362,865 (19.8%) |   511,854 (42.5%)|
+|SemiDetached        |   482,237 (26.4%) |   136,376 (11.3%)|
+|Detached            |   450,296 (24.6%) |    85,247 (7.1%) |
+|Bungalow            |         0 (0%)    |    29,977 (2.5%) |
+|PropertyTypeUnknown |         0 (0%)    |   165,748 (13.8%)|
+|Beds1to3            |   745,708 (40.8%) | 1,012,098 (84.0%)|
+|Beds4Plus           |   198,778 (10.9%) |   154,832 (12.9%)|
 
 Approximately 23% of records provided a forwarding postcodes, therefore it is possible to obtain origin-destination pairs for 417,219 households sold (145,885 rentals). However, this will heavily bias the data, especially since forwarding is a paid service. The differences between properties listed and those with forwarding postcode can be seen below (percentage change from total in brackets):
 
@@ -35,14 +35,24 @@ Approximately 23% of records provided a forwarding postcodes, therefore it is po
 
 To check: numbers don't match totals. Small errors expected in % due to rounding but raw numbers dont add up. Large discrepancy in bedroom information for sales.
 
+As expected, reducing the data to households with a forwarding service favours more expensive moves. The number of flats in the data also reduces significantly (10%).
+
+We can compare data between wards to obtain general trends in the data. For example, in figure (1) we can see the most frequent type of dwelling sold in each ward. Although terraced houses are the most common property sold across the UK, these concentrate mainly in urban areas whilst most wards have a higher number of detached properties sold. It is interesting to note that Greater London has a significant number of flats being sold, being more common that terraced.
+
 ![sales_dwelling](img/sales_category_dwelling.png)    
 **Figure 1.** Most common type of dwelling sold in each ward.
+
+Moves can be split into under or over £250,000 transactions as shown in figure (2). It is common for properties in the UK to be sold over this threshold (35% of total), however, cheaper moves are predominant in the North and East of England as well as in Wales. Price bands should be obtained to gain more insight in this subject. 
 
 ![sales_price](img/sales_category_price.png)    
 **Figure 2.** Most common price threshold for households sold in each ward.
 
+It is more common for properties to be sold with one to three beds but in several wards properties with four or more are predominant. This pattern appears to be uniform across the UK. 
+
 ![sales_beds](img/sales_category_beds.png)    
 **Figure 3.** Most common number of bedrooms per household sold in each ward.
+
+Results are very similar when observing rentals instead of sales. The main difference being the increased percentage of flats rented as well as a strong dominance of properties with one to three beds accounting for 80% of data. It is also worth noting that origin-destination pairs are even more skewed, with rents over £250 representing 64% of od pairs compared to 31% of the total rentals listed. 
 
 ![rentals_dwelling](img/rentals_category_dwelling.png)    
 **Figure 4.** Most common type of dwelling rented in each ward.
@@ -53,7 +63,7 @@ To check: numbers don't match totals. Small errors expected in % due to rounding
 ![rentals_beds](img/rentals_category_beds.png)    
 **Figure 6.** Most common number of bedrooms per household rented in each ward.
 
-Average distance between origin and destination for each type of sale (in km):
+Average distance between origin and destination varies for each type of sale:
 
 | Average Distance (km) | Sales | Rentals |
 |-----------------------|------:|--------:|
@@ -68,6 +78,10 @@ Average distance between origin and destination for each type of sale (in km):
 |Bedrooms 4 or more     | 56.76 | 50.19   |
 |Rural                  | 56.64 | 44.30   |
 |Urban                  | 49.75 | 42.21   |
+
+The most interesting differences are that detached property sales have a much greater mobility than other types, over 10km difference. More expensive sales also have a greater mobility thatn cheaper ones (around 15km difference) and rural areas move more on average than urban ones.
+
+It is sueful to look at the rural urban classification of wards stated by the ONS (see figure 7). This gives insight into some of the patterns seen in previous figures because cities behave differently to rural areas.
 
 ![rural-urban_split](img/rural_urban_split.png)    
 **Figure 7.** ONS rural urban classification by ward - 2011 census.
