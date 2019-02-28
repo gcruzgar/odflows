@@ -15,6 +15,7 @@ def main():
             'price': ['RentUnder250', 'RentOver250'],
             'RUC11': ['Rural', 'Urban']
         }
+        norm_type = 'NumberOfRentals'
     else:
         df = pd.read_csv("data/sales_and_distance.csv", index_col=0)
         df_types = {
@@ -23,6 +24,7 @@ def main():
             'price': ['MovesUnder250k', 'MovesOver250k'],
             'RUC11': ['Rural', 'Urban']
         }
+        norm_type='NumberOfMoves'
 
     typ = args.c[0]
     print("Category: %s" % typ)
@@ -36,11 +38,20 @@ def main():
 
     # filter by category
     d = {}
+    dw={}
     for cat in df_types[typ]:
         d[cat] = df.loc[df['Class'] == cat, 'distance'].mean()
+        
+        if typ != 'RUC11':
+            dw[cat] = (df['distance']*df[cat]).mean()
+        else:
+            df1 = df.loc[df['Class'] == cat]
+            dw[cat] = (df1['distance']*df1[norm_type]).mean()
+        
     distance_av = pd.Series(d)
+    distance_wav = pd.Series(dw)
     print("Average distance (km): \n{}".format((distance_av/1000).round(2)))
-    
+    print("\nAverage weighted distance (km): \n{}".format((distance_wav/1000).round(2)))
     return distance_av
 
 if __name__ == "__main__":
