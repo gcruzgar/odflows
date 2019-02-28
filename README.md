@@ -75,7 +75,7 @@ Average distance between wards with type as most common:
 |Flat                   | 45.27 |  42.92  |
 |SemiDetached           | 51.80 |  41.62  |
 |Detached               | 62.90 |  47.49  |
-|Bungalow               | na    |  47.29  |
+|Bungalow               |    na |  47.29  |
 |Price Under £250 (k for sales)    | 45.31 |  42.79  |
 |Price Over £250 (k for sales)     | 60.70 |  44.12  |
 |Bedrooms 1-3           | 51.34 | 42.22   |
@@ -89,15 +89,16 @@ Average distance between origin and destination:
 
 | Average Distance (km) | Sales | Rentals |
 |-----------------------|------:|--------:|
-|Terraced               | 14.41 |   9.18  |  
-|Flat                   |  4.89 |  15.33  |
-|SemiDetached           | 15.36 |   6.18  |
-|Detached               | 20.03 |   5.65  |
-|Bungalow               | na    |   1.74  |
-|Price Under £250 (k for sales)    | 25.60 |  28.80  |
-|Price Over £250 (k for sales)     | 29.09 |  16.11  |
-|Bedrooms 1-3           | 24.26 |  37.60  |
-|Bedrooms 4 or more     | 11.39 |   6.88  |
+|All moves              | 54.69 |  45.14  |
+|Terraced               | 41.23 |  36.58  |  
+|Flat                   | 35.25 |  41.21  |
+|SemiDetached           | 42.89 |  35.01  |
+|Detached               | 51.90 |  39.42  |
+|Bungalow               |    na |  36.51  |
+|Price Under £250 (k for sales)    | 45.29 |  43.86  |
+|Price Over £250 (k for sales)     | 55.19 |  42.22  |
+|Bedrooms 1-3           | 46.14 |  43.69  |
+|Bedrooms 4 or more     | 44.04 |  38.74  |
 |Rural                  | 58.71 |  45.84  |
 |Urban                  | 52.06 |  44.11  |
 
