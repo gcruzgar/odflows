@@ -83,7 +83,7 @@ Average distance between wards with type as most common:
 |Rural                  | 56.64 | 44.30   |
 |Urban                  | 49.75 | 42.21   |
 
-The most interesting differences are that detached property sales have a much greater mobility than other types, over 10km difference. More expensive sales also have a greater mobility thatn cheaper ones (around 15km difference) and rural areas move more on average than urban ones.
+The most interesting differences are that detached property sales have a much greater mobility than other types, over 10km difference. More expensive sales also have a greater mobility than cheaper ones (around 15km difference) and rural areas move more on average than urban ones.
 
 Average distance between origin and destination:
 
