@@ -1,5 +1,7 @@
 # odflows
 
+This repository is unfished. WIP
+
 Exploratory analysis of dwelling rentals and sales in England and Wales.
 
 Number of sales and rentals in dataset, percentage of total in brackets:
@@ -63,7 +65,9 @@ Results are very similar when observing rentals instead of sales. The main diffe
 ![rentals_beds](img/rentals_category_beds.png)    
 **Figure 6.** Most common number of bedrooms per household rented in each ward.
 
-Average distance between origin and destination varies for each type of sale:
+Average distance between origin and destination varies for each type of sale.
+
+Average distance between wards with type as most common:
 
 | Average Distance (km) | Sales | Rentals |
 |-----------------------|------:|--------:|
@@ -80,6 +84,23 @@ Average distance between origin and destination varies for each type of sale:
 |Urban                  | 49.75 | 42.21   |
 
 The most interesting differences are that detached property sales have a much greater mobility than other types, over 10km difference. More expensive sales also have a greater mobility thatn cheaper ones (around 15km difference) and rural areas move more on average than urban ones.
+
+Average distance between origin and destination:
+
+| Average Distance (km) | Sales | Rentals |
+|-----------------------|------:|--------:|
+|Terraced               | 14.41 |   9.18  |  
+|Flat                   |  4.89 |  15.33  |
+|SemiDetached           | 15.36 |   6.18  |
+|Detached               | 20.03 |   5.65  |
+|Bungalow               | na    |   1.74  |
+|Price Under £250 (k for sales)    | 25.60 |  28.80  |
+|Price Over £250 (k for sales)     | 29.09 |  16.11  |
+|Bedrooms 1-3           | 24.26 |  37.60  |
+|Bedrooms 4 or more     | 11.39 |   6.88  |
+|Rural                  |       |         |
+|Urban                  |       |         |
+
 
 It is useful to look at the rural urban classification of wards stated by the ONS (see figure 7). This gives insight into some of the patterns seen in previous figures because cities behave differently to rural areas.
 
