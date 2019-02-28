@@ -98,9 +98,8 @@ Average distance between origin and destination:
 |Price Over £250 (k for sales)     | 29.09 |  16.11  |
 |Bedrooms 1-3           | 24.26 |  37.60  |
 |Bedrooms 4 or more     | 11.39 |   6.88  |
-|Rural                  |       |         |
-|Urban                  |       |         |
-
+|Rural                  | 58.71 |  45.84  |
+|Urban                  | 52.06 |  44.11  |
 
 It is useful to look at the rural urban classification of wards stated by the ONS (see figure 7). This gives insight into some of the patterns seen in previous figures because cities behave differently to rural areas.
 
