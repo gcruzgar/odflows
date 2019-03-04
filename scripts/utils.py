@@ -38,7 +38,7 @@ def categ(df, cat, r=False):
     else:
         cat_types = {
             'beds': ['Beds1to3', 'Beds4Plus'], 
-            'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow'], 
+            'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached'], #, 'Bungalow'
             'price': ['RentUnder250', 'RentOver250']
         }
 
@@ -52,7 +52,8 @@ def categ_plot(shp_path, df, var_name, title):
     print("\nGenerating plot...")
     
     map_df = gpd.read_file(shp_path)
-    merged = map_df.set_index("wd15nm").join(df[var_name]).dropna(subset=[var_name]) #.fillna(value='no data available')
+    merged = map_df.set_index("wd15nm").join(df[var_name]).fillna(value='no data available') #.dropna(subset=[var_name]) 
+    merged=merged.loc[~merged["wd15cd"].str.startswith('S', na=False)] # drop Scottish wards
 
     ax = plt.subplots(1,1, figsize=(8,7))[1]
     ax.axis('off')
