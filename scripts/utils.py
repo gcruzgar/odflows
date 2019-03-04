@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import geopandas as gpd 
 
 def uk_plot(shp_path, df, var_name, title):
+    "Choropleth map of the given variable."
 
     print("\nGenerating plot...")
 
@@ -19,7 +20,8 @@ def uk_plot(shp_path, df, var_name, title):
     merged.plot(column=str(var_name), cmap='coolwarm', linewidth=0.3, edgecolor='0.8', ax=ax)
 
 def top_10(df, var_name, title):
-    
+    "Bar chart of the top 10 wards for the given variable"
+
     df_desc = df.sort_values(by=[var_name], ascending=False)
     plt.figure(figsize=[12,6])
     plt.bar(df_desc.index[0:10], df_desc[var_name][0:10])
@@ -28,6 +30,7 @@ def top_10(df, var_name, title):
     plt.title(title)
 
 def categ(df, cat, r=False):
+    "Most common type of move for a given category in each ward."
 
     if r == False:
         cat_types = {
@@ -48,7 +51,7 @@ def categ(df, cat, r=False):
     return df
     
 def categ_plot(shp_path, df, var_name, title):
-
+    "Categorical plot for given variable"
     print("\nGenerating plot...")
     
     map_df = gpd.read_file(shp_path)
