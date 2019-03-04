@@ -11,7 +11,6 @@ def main():
     var_name = args.var_name
     
     if args.r:
-        r=True
         print("Loading rental data...")
         df = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t').dropna(subset=['DestinationWardCode'])
         df.rename(index=str, columns={'NumberOfRentals': 'Total'}, inplace=True)
@@ -19,7 +18,6 @@ def main():
             'Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow', 'PropertyTypeUnknown', 
             'Beds1to3', 'Beds4Plus']
     else:
-        r=False
         print("Loading sales data...")
         df = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t').dropna(subset=['DestinationWardCode'])
         df.rename(index=str, columns={'NumberOfMoves': 'Total'}, inplace=True)   
@@ -57,7 +55,7 @@ def main():
     if args.c:
 
         cat = args.c[0]
-        cat_df = categ(df_dict['df_origin'], cat, r)
+        cat_df = categ(df_dict['df_origin'], cat, args.r)
         categ_plot(shp_path, cat_df, cat, 'Most frequent - '+cat)
 
     plt.show()
