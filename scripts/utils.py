@@ -27,6 +27,26 @@ def top_10(df, var_name, title):
     plt.xticks(fontsize=10)
     plt.title(title)
 
+def categ(df, cat, r=False):
+
+    if r == False:
+        cat_types = {
+            'beds': ['Beds1to3', 'Beds4Plus'], 
+            'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached'], 
+            'price': ['MovesUnder250k', 'MovesOver250k']
+        }
+    else:
+        cat_types = {
+            'beds': ['Beds1to3', 'Beds4Plus'], 
+            'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow'], 
+            'price': ['RentUnder250', 'RentOver250']
+        }
+
+    # most common type in each ward
+    df[cat] = df[cat_types[cat]].idxmax(axis=1)
+
+    return df
+    
 def categ_plot(shp_path, df, var_name, title):
 
     print("\nGenerating plot...")

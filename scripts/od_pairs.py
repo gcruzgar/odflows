@@ -4,27 +4,7 @@ import numpy as np
 import pandas as pd 
 import geopandas as gpd 
 import matplotlib.pyplot as plt 
-from utils import uk_plot, top_10, categ_plot
-
-def categ(df, cat, r=False):
-
-    if r == False:
-        cat_types = {
-            'beds': ['Beds1to3', 'Beds4Plus'], 
-            'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached'], 
-            'price': ['MovesUnder250k', 'MovesOver250k']
-        }
-    else:
-        cat_types = {
-            'beds': ['Beds1to3', 'Beds4Plus'], 
-            'dwelling': ['Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow'], 
-            'price': ['RentUnder250', 'RentOver250']
-        }
-
-    # most common type in each ward
-    df[cat] = df[cat_types[cat]].idxmax(axis=1)
-
-    return df
+from utils import uk_plot, top_10, categ, categ_plot
 
 def main():
 
