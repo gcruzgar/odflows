@@ -50,13 +50,13 @@ def categ(df, cat, r=False):
 
     return df
     
-def categ_plot(shp_path, df, var_name, title):
+def categ_plot(shp_path, geo_code, df, var_name, title):
     "Categorical plot for given variable"
     print("\nGenerating plot...")
     
-    map_df = gpd.read_file(shp_path)
-    merged = map_df.set_index("wd15nm").join(df[var_name]).fillna(value='no data available') #.dropna(subset=[var_name]) 
-    merged=merged.loc[~merged["wd15cd"].str.startswith('S', na=False)] # drop Scottish wards
+    map_df = gpd.read_file(shp_path) 
+    merged = map_df.merge(df[var_name], left_on=geo_code, right_on=df.index) #.fillna(value='no data available') #.dropna(subset=[var_name]) 
+    #merged=merged.loc[~merged["wd15cd"].str.startswith('S', na=False)] # drop Scottish wards
 
     ax = plt.subplots(1,1, figsize=(8,7))[1]
     ax.axis('off')
@@ -108,9 +108,9 @@ def ru_class(remap=True):
         rural_urban['RUC11'].replace(ru_map, inplace=True)
 
     # plot
-    #shp_path = "data/shapefiles/GB_Wards_2015.shp"
-    #categ_plot(shp_path, rural_urban.set_index('WD11NM'), 'RUC11', 'Rural/Urban split - 2011')
-    #plt.show()
+    # shp_path = "data/shapefiles/EW_Wards_2011.shp"
+    # categ_plot(shp_path, 'geo_code', rural_urban.set_index('WD11CD'), 'RUC11', 'Rural/Urban Classification - 2011')
+    # plt.show()
 
     # merge with df
     #b = df.merge(rural_urban[['WD11CD','RUC11']], left_on='OriginWardCode', right_on=['WD11CD'], how='left')
