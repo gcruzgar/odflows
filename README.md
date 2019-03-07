@@ -151,3 +151,31 @@ There is not much difference in sales that have rural areas as their destination
 |MovesOver250k | 3031  | 2750  |
 |Beds1to3      | 5644  | 6465  |
 |Beds4Plus     | 1479  | 1013  |
+
+Numbers shown are the number of wards with that type of sale as most common.
+
+The same method can be used for rentals. Note the huge increase in flats compared to sale data. 
+
+| Rentals - in | Rural | Urban |
+|--------------|------:|------:|
+|Total         | 4581  | 7170  |
+|Detached      | 1306  |  350  |
+|Terraced      | 1811  | 2737  |
+|SemiDetached  |  897  |  856  |
+|Flat          |  567  | 3227  |
+|MovesUnder250k| 3716  | 5459  |
+|MovesOver250k |  865  | 1711  |
+|Beds1to3      | 3915  | 6983  |
+|Beds4Plus     |  666  |  187  |
+
+| Rentals - out| Rural | Urban |
+|--------------|------:|------:|
+|Total         | 5222  | 6549  |
+|Detached      | 1009  |  854  |
+|Terraced      | 2106  | 2585  |
+|SemiDetached  |  976  | 1149  |
+|Flat          | 1131  | 1961  |
+|MovesUnder250k| 4019  | 5197  |
+|MovesOver250k | 1203  | 1352  |
+|Beds1to3      | 4662  | 6191  |
+|Beds4Plus     |  560  |  358  |
