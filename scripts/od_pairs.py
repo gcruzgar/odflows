@@ -30,18 +30,19 @@ def main():
     # Note: dropna is used to only keep available od pairs
 
     df_dict = {
-        'df_origin': pd.pivot_table(df, values = df_types, index = 'OriginWardName', aggfunc=np.sum),
-        'df_destination': pd.pivot_table(df, values = df_types, index = 'DestinationWardName', aggfunc=np.sum),
+        'df_origin': pd.pivot_table(df, values = df_types, index = 'OriginWardCode', aggfunc=np.sum),
+        'df_destination': pd.pivot_table(df, values = df_types, index = 'DestinationWardCode', aggfunc=np.sum),
     }
     df_dict['df_net'] = df_dict['df_destination'] - df_dict['df_origin']
 
     print("\nMoves from origin: \n{}".format(df_dict['df_origin'].sum()))
     print("\nMoves to destination: \n{}".format(df_dict['df_destination'].sum()))
 
-    shp_path = "data/shapefiles/GB_Wards_2015.shp"
+    shp_path = "data/shapefiles/GB_Wards_2017.shp"
+    geo_code = 'wd17cd'
 
     # raw - net
-    uk_plot(shp_path, df_dict['df_net'], var_name, 'net df - '+var_name)
+    #uk_plot(shp_path, df_dict['df_net'], var_name, 'net df - '+var_name)
     #top_10(df_net,var_name, var_name+' (net) - Top 10')
 
     # normalised
@@ -58,7 +59,7 @@ def main():
 
         cat = args.c[0]
         cat_df = categ(df_dict['df_origin'], cat, args.r)
-        categ_plot(shp_path, cat_df, cat, ('Most frequent %s - %s' % (rs, cat)))
+        categ_plot(shp_path, geo_code, cat_df, cat, ('Most frequent %s - %s' % (rs, cat)))
 
     plt.show()
 
