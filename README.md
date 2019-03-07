@@ -123,3 +123,31 @@ Correlation of moves with distance:
 |Beds4Plus                      | -0.095 | -0.052  | 
 
 Overall, there is a negative correlation between moves and distance. People are less likely to buy or rent if the destination is further away. However, these correlations are quite weak.
+
+It is also interesting to note the different behaviours experienced by household sales originating from a rural area compared to an urban one. The former has a much larger tendency towards selling detached housing whilst the latter sells more terraced. Rural-origin sales have a very even spread of sales based on price compared to urban-origin sales. There is also a larger discrepancy in number of beds for urban sales comapred to rural ones.
+
+| Sales - in   | Rural | Urban |
+|--------------|------:|------:|
+|Total         | 6579  | 7538  |
+|Detached      | 3821  | 1698  |
+|Terraced      | 1257  | 3027  |
+|SemiDetached  | 1411  | 2464  |
+|Flat          |   90  |  349  |
+|MovesUnder250k| 3557  | 4823  |
+|MovesOver250k | 3022  | 2715  |
+|Beds1to3      | 4976  | 6959  |
+|Beds4Plus     | 1603  |  579  |
+
+There is not much difference in sales that have rural areas as their destination compared to urban areas:
+
+| Sales - out  | Rural | Urban |
+|--------------|------:|------:|
+|Total         | 7123  | 7478  |
+|Detached      | 2951  | 2859  |
+|Terraced      | 2075  | 2189  |
+|SemiDetached  | 1831  | 2081  |
+|Flat          |  266  |  349  |
+|MovesUnder250k| 4092  | 4728  |
+|MovesOver250k | 3031  | 2750  |
+|Beds1to3      | 5644  | 6465  |
+|Beds4Plus     | 1479  | 1013  |
