@@ -55,8 +55,8 @@ def categ_plot(shp_path, geo_code, df, var_name, title):
     print("\nGenerating plot...")
     
     map_df = gpd.read_file(shp_path) 
-    merged = map_df.merge(df[var_name], left_on=geo_code, right_on=df.index) #.fillna(value='no data available') #.dropna(subset=[var_name]) 
-    #merged=merged.loc[~merged["wd15cd"].str.startswith('S', na=False)] # drop Scottish wards
+    merged = map_df.merge(df[var_name], left_on=geo_code, right_on=df.index, how='left').fillna(value='no data available') #.dropna(subset=[var_name]) 
+    merged=merged.loc[~merged[geo_code].str.startswith('S', na=False)] # drop Scottish wards
 
     ax = plt.subplots(1,1, figsize=(8,7))[1]
     ax.axis('off')
