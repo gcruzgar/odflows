@@ -126,58 +126,58 @@ Overall, there is a negative correlation between moves and distance. People are 
 
 It is also interesting to note the different behaviours experienced by household sales originating from a rural area compared to an urban one. The former has a much larger tendency towards selling detached housing whilst the latter sells more terraced and semi-detached. As expected, the number of flats sold is significantly larger for urban areas. There is also a larger discrepancy in number of beds for urban sales comapred to rural ones.
 
-| Sales - in   | Rural         | Urban         |
-|--------------|--------------:|--------------:|
-|Total         | 55287         | 254114        |
-|Detached      | 28421 (51.41%)|  64293(25.30%)|
-|Terraced      | 10964 (19.83%)|  79722(31.37%)|
-|SemiDetached  | 14418 (26.08%)|  79258(31.19%)|
-|Flat          |  1484 ( 2.68%)|  30841(12.14%)|
-|MovesUnder250k| 26547 (48.02%)| 140216(55.18%)|
-|MovesOver250k | 28740 (51.98%)| 113898(44.82%)|
-|Beds1to3      | 20279 (36.68%)| 118359(46.58%)|
-|Beds4Plus     | 13531 (24.47%)|  45998(18.10%)|
+| Sales - in   | Rural          | Urban          |
+|--------------|---------------:|---------------:|
+|Total         | 55,287         | 254,114        |
+|Detached      | 28,421 (51.41%)|  64,293(25.30%)|
+|Terraced      | 10,964 (19.83%)|  79,722(31.37%)|
+|SemiDetached  | 14,418 (26.08%)|  79,258(31.19%)|
+|Flat          |  1,484 ( 2.68%)|  30,841(12.14%)|
+|MovesUnder250k| 26,547 (48.02%)| 140,216(55.18%)|
+|MovesOver250k | 28,740 (51.98%)| 113,898(44.82%)|
+|Beds1to3      | 20,279 (36.68%)| 118,359(46.58%)|
+|Beds4Plus     | 13,531 (24.47%)|  45,998(18.10%)|
 
 There is not much difference in sales that have rural areas as their destination compared to urban areas other than the number of flats:
 
-| Sales - out  | Rural          | Urban           |
-|--------------|---------------:|----------------:|
-|Total         |  70178         | 234058          |
-|Terraced      |  17376 (24.76%)|  71278 (30.45%) |
-|Flat          |   3699 ( 5.27%)|  27966 (11.95%) |
-|SemiDetached  |  19866 (28.31%)|  71469 (30.53%) |
-|Detached      |  29237 (41.66%)|  63345 (27.06%) |
-|MovesUnder250k|  35018 (49.90%)| 130262 (55.65%) |
-|MovesOver250k |  35160 (50.10%)| 103796 (44.35%) |
-|Beds1to3      |  28011 (39.91%)| 108380 (46.30%) |
-|Beds4Plus     |  16242 (23.14%)|  42516 (18.16%) |
+| Sales - out  | Rural           | Urban            |
+|--------------|----------------:|-----------------:|
+|Total         |  70,178         | 234,058          |
+|Terraced      |  17,376 (24.76%)|  71,278 (30.45%) |
+|Flat          |   3,699 ( 5.27%)|  27,966 (11.95%) |
+|SemiDetached  |  19,866 (28.31%)|  71,469 (30.53%) |
+|Detached      |  29,237 (41.66%)|  63,345 (27.06%) |
+|MovesUnder250k|  35,018 (49.90%)| 130,262 (55.65%) |
+|MovesOver250k |  35,160 (50.10%)| 103,796 (44.35%) |
+|Beds1to3      |  28,011 (39.91%)| 108,380 (46.30%) |
+|Beds4Plus     |  16,242 (23.14%)|  42,516 (18.16%) |
 
 The same method can be used for rentals. Note the huge increase in flats compared to sale data as well as the tendency for cheaper rent in rural areas. 
 
-| Rentals - in        | Rural          | Urban         |
-|---------------------|---------------:|--------------:|
-|Total                | 12960          | 96251         |
-|Terraced             |  2425 (18.71%) | 21043 (21.86%)|
-|Flat                 |  1318 (10.17%) | 36643 (38.07%)|
-|SemiDetached         |  2242 (17.30%) | 13342 (13.86%)|
-|Detached             |  3588 (27.69%) |  8281 ( 8.60%)|
-|Bungalow             |  1150 ( 8.87%) |  2545 ( 2.64%)|
-|PropertyTypeUnknown  |  2237 (17.26%) | 14397 (14.96%)|
-|RentUnder250         |  9691 (74.78%) | 56960 (59.18%)|
-|RentOver250          |  3209 (24.76%) | 38729 (40.24%)|
-|Beds1to3             |  9718 (74.98%) | 81799 (84.99%)|
-|Beds4Plus            |  3072 (23.70%) | 12830 (13.33%)|
+| Rentals - in        | Rural           | Urban          |
+|---------------------|----------------:|---------------:|
+|Total                | 12,960          | 96,251         |
+|Terraced             |  2,425 (18.71%) | 21,043 (21.86%)|
+|Flat                 |  1,318 (10.17%) | 36,643 (38.07%)|
+|SemiDetached         |  2,242 (17.30%) | 13,342 (13.86%)|
+|Detached             |  3,588 (27.69%) |  8,281 ( 8.60%)|
+|Bungalow             |  1,150 ( 8.87%) |  2,545 ( 2.64%)|
+|PropertyTypeUnknown  |  2,237 (17.26%) | 14,397 (14.96%)|
+|RentUnder250         |  9,691 (74.78%) | 56,960 (59.18%)|
+|RentOver250          |  3,209 (24.76%) | 38,729 (40.24%)|
+|Beds1to3             |  9,718 (74.98%) | 81,799 (84.99%)|
+|Beds4Plus            |  3,072 (23.70%) | 12,830 (13.33%)|
 
-| Rentals - out     | Rural            | Urban          |
-|-------------------|-----------------:|---------------:|
-|Total              |  17892           | 90373          |
-|Terraced           |   3762  (21.03%) | 19617 (21.71%) |
-|Flat               |   3445  (19.25%) | 33917 (37.53%) |
-|SemiDetached       |   2985  (16.68%) | 12405 (13.73%) |
-|Detached           |   3521  (19.68%) |  8325 ( 9.21%) |
-|Bungalow           |   1086  ( 6.07%) |  2666 ( 2.95%) |
-|PropertyTypeUnknown|   3093  (17.29%) | 13443 (14.88%) |
-|RentUnder250       |  12698  (70.97%) | 54226 (60.00%) |
-|RentOver250        |   5103  (28.52%) | 35638 (39.43%) |
-|Beds1to3           |  14125  (78.95%) | 76686 (84.85%) |
-|Beds4Plus          |   3537  (19.77%) | 12159 (13.45%) |
+| Rentals - out     | Rural             | Urban           |
+|-------------------|------------------:|----------------:|
+|Total              |  17,892           | 90,373          |
+|Terraced           |   3,762  (21.03%) | 19,617 (21.71%) |
+|Flat               |   3,445  (19.25%) | 33,917 (37.53%) |
+|SemiDetached       |   2,985  (16.68%) | 12,405 (13.73%) |
+|Detached           |   3,521  (19.68%) |  8,325 ( 9.21%) |
+|Bungalow           |   1,086  ( 6.07%) |  2,666 ( 2.95%) |
+|PropertyTypeUnknown|   3,093  (17.29%) | 13,443 (14.88%) |
+|RentUnder250       |  12,698  (70.97%) | 54,226 (60.00%) |
+|RentOver250        |   5,103  (28.52%) | 35,638 (39.43%) |
+|Beds1to3           |  14,125  (78.95%) | 76,686 (84.85%) |
+|Beds4Plus          |   3,537  (19.77%) | 12,159 (13.45%) |
