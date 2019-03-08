@@ -35,30 +35,36 @@ def main():
         in_out = 'destination'
         print("total outflow")
         od_a = 'DestinationWardCode'
-        od_b = 'OriginWardName'
+        od_b = 'OriginWardCode'
     else:
         in_out = 'origin'
         print("total inflow")
         od_a = 'OriginWardCode'
-        od_b = 'DestinationWardName'
+        od_b = 'DestinationWardCode'
 
     rural_urban = ru_class()
     # classify moves as rural or urban based on their origin/destination ward
     b = df.merge(rural_urban[['WD11CD','RUC11']], left_on=[od_a], right_on=['WD11CD'], how='left')
 
-    shp_path = "data/shapefiles/GB_Wards_2015.shp"
+    shp_path = "data/shapefiles/GB_Wards_2017.shp"
+    geo_code = 'wd17cd'
     cat = args.c[0]
 
     for ruc in ['Rural', 'Urban']:
 
         r_df = b.loc[b['RUC11']==ruc] # filter moves based on origin/destination being rural or urban
-
+        #print(len(r_df.loc[(r_df['Beds1to3']==0) & (r_df['Beds4Plus']==0)]))
         odm = pd.pivot_table(r_df, values = df_types, index = od_b, aggfunc=np.sum)
-          
-        cat_df = categ(odm, cat, args.r) # 
+
+        nm_df = pd.DataFrame()
+        nm_df['raw'] = odm[df_types].sum()
+        nm_df['percentage'] = odm[df_types].sum()/(odm['Total'].sum())*100
         print("\nNumber of moves with %s areas as %s: " % (ruc, in_out))
-        print(cat_df[cat].value_counts())
-        categ_plot(shp_path,cat_df, cat, 'Most common %s - %s %s' % (cat, ruc, in_out))
+        print(nm_df.round(2))
+
+        cat_df = categ(odm, cat, args.r) 
+        categ_plot(shp_path, geo_code, cat_df, cat, 'Most common %s - %s %s' % (cat, ruc, in_out))
+
     plt.show()
 
 if __name__ == "__main__":
