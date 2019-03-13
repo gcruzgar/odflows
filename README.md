@@ -129,14 +129,14 @@ It is also interesting to note the different behaviours experienced by household
 | Sales - in   | Rural          | Urban          |
 |--------------|---------------:|---------------:|
 |Total         | 55,287         | 254,114        |
-|Detached      | 28,421 (51.41%)|  64,293(25.30%)|
-|Terraced      | 10,964 (19.83%)|  79,722(31.37%)|
-|SemiDetached  | 14,418 (26.08%)|  79,258(31.19%)|
-|Flat          |  1,484 ( 2.68%)|  30,841(12.14%)|
-|MovesUnder250k| 26,547 (48.02%)| 140,216(55.18%)|
-|MovesOver250k | 28,740 (51.98%)| 113,898(44.82%)|
-|Beds1to3      | 20,279 (36.68%)| 118,359(46.58%)|
-|Beds4Plus     | 13,531 (24.47%)|  45,998(18.10%)|
+|Detached      | 28,421 (51.41%)|  64,293 (25.30%)|
+|Terraced      | 10,964 (19.83%)|  79,722 (31.37%)|
+|SemiDetached  | 14,418 (26.08%)|  79,258 (31.19%)|
+|Flat          |  1,484  (2.68%)|  30,841 (12.14%)|
+|MovesUnder250k| 26,547 (48.02%)| 140,216 (55.18%)|
+|MovesOver250k | 28,740 (51.98%)| 113,898 (44.82%)|
+|Beds1to3      | 20,279 (36.68%)| 118,359 (46.58%)|
+|Beds4Plus     | 13,531 (24.47%)|  45,998 (18.10%)|
 
 There is not much difference in sales that have rural areas as their destination compared to urban areas other than the number of flats:
 
@@ -144,7 +144,7 @@ There is not much difference in sales that have rural areas as their destination
 |--------------|----------------:|-----------------:|
 |Total         |  70,178         | 234,058          |
 |Terraced      |  17,376 (24.76%)|  71,278 (30.45%) |
-|Flat          |   3,699 ( 5.27%)|  27,966 (11.95%) |
+|Flat          |   3,699  (5.27%)|  27,966 (11.95%) |
 |SemiDetached  |  19,866 (28.31%)|  71,469 (30.53%) |
 |Detached      |  29,237 (41.66%)|  63,345 (27.06%) |
 |MovesUnder250k|  35,018 (49.90%)| 130,262 (55.65%) |
@@ -160,8 +160,8 @@ The same method can be used for rentals. Note the huge increase in flats compare
 |Terraced             |  2,425 (18.71%) | 21,043 (21.86%)|
 |Flat                 |  1,318 (10.17%) | 36,643 (38.07%)|
 |SemiDetached         |  2,242 (17.30%) | 13,342 (13.86%)|
-|Detached             |  3,588 (27.69%) |  8,281 ( 8.60%)|
-|Bungalow             |  1,150 ( 8.87%) |  2,545 ( 2.64%)|
+|Detached             |  3,588 (27.69%) |  8,281  (8.60%)|
+|Bungalow             |  1,150  (8.87%) |  2,545  (2.64%)|
 |PropertyTypeUnknown  |  2,237 (17.26%) | 14,397 (14.96%)|
 |RentUnder250         |  9,691 (74.78%) | 56,960 (59.18%)|
 |RentOver250          |  3,209 (24.76%) | 38,729 (40.24%)|
@@ -174,8 +174,8 @@ The same method can be used for rentals. Note the huge increase in flats compare
 |Terraced           |   3,762  (21.03%) | 19,617 (21.71%) |
 |Flat               |   3,445  (19.25%) | 33,917 (37.53%) |
 |SemiDetached       |   2,985  (16.68%) | 12,405 (13.73%) |
-|Detached           |   3,521  (19.68%) |  8,325 ( 9.21%) |
-|Bungalow           |   1,086  ( 6.07%) |  2,666 ( 2.95%) |
+|Detached           |   3,521  (19.68%) |  8,325  (9.21%) |
+|Bungalow           |   1,086   (6.07%) |  2,666  (2.95%) |
 |PropertyTypeUnknown|   3,093  (17.29%) | 13,443 (14.88%) |
 |RentUnder250       |  12,698  (70.97%) | 54,226 (60.00%) |
 |RentOver250        |   5,103  (28.52%) | 35,638 (39.43%) |
