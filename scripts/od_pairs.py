@@ -38,8 +38,8 @@ def main():
     print("\nMoves from origin: \n{}".format(df_dict['df_origin'].sum()))
     print("\nMoves to destination: \n{}".format(df_dict['df_destination'].sum()))
 
-    shp_path = "data/shapefiles/GB_Wards_2017.shp"
-    geo_code = 'wd17cd'
+    shp_path = "data/shapefiles/GB_Wards_2016.shp"
+    geo_code = 'wd16cd'
 
     # raw - net
     #uk_plot(shp_path, df_dict['df_net'], var_name, 'net df - '+var_name)
