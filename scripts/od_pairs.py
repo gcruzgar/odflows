@@ -42,7 +42,7 @@ def main():
     geo_code = 'wd16cd'
 
     # raw - net
-    #uk_plot(shp_path, df_dict['df_net'], var_name, 'net df - '+var_name)
+    uk_plot(shp_path, geo_code, df_dict['df_net'], var_name, 'net df - '+var_name)
     #top_10(df_net,var_name, var_name+' (net) - Top 10')
 
     # normalised
