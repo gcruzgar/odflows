@@ -37,33 +37,39 @@ Approximately 23% of records provided a forwarding postcode, therefore it is pos
 
 To check: numbers don't match totals. Small errors expected in % due to rounding but raw numbers dont add up. Large discrepancy in bedroom information for sales. There seems to be data missing, e.g. 17% of OD pairs have a value of zero for both Beds1to3 and Beds4plus. 
 
-As expected, reducing the data to households with a forwarding service favours more expensive moves. The number of flats in the data also reduces significantly (10%). The changes are larger for rentals than sales, but these are relevant in both cases.
+As expected, reducing the data to households with a forwarding service favours more expensive moves, with around 30% increase in these rentals. The number of flats in the data also reduces significantly (10%). The changes are larger for rentals than sales, but these are relevant in both cases.
 
-We can compare data between wards to obtain general trends in the data. For example, in figure (1) we can see the most frequent type of dwelling sold in each ward. Although terraced houses are the most common property sold across the UK, these concentrate mainly in urban areas whilst most wards have a higher number of detached properties sold. It is interesting to note that Greater London has a significant number of flats being sold, being more common that terraced.
+![sales_origin](img/sales_origin_total.png)    
+**Figure 1.** Number of houses listed for sale in each LAD. There is more data available in certain LADs such as Leeds, Sheffield and Cornwall. 
+
+![sales_net](img/sales_net_total.png)    
+**Figure 2.** Net moves (OD-sales) in each LAD. The distribution seen is quite unexpected as big cities are losing people whilst Cornwall still has a strong net movement. London has a negative internal number of moves as expected. 
+
+We can compare data between wards to obtain general trends in the data. For example, in figure (3) we can see the most frequent type of dwelling sold in each ward. Although terraced houses are the most common property sold across the UK, these concentrate mainly in urban areas whilst most wards have a higher number of detached properties sold. It is interesting to note that Greater London has a significant number of flats being sold, being more common that terraced.
 
 ![sales_dwelling](img/sales_category_dwelling.png)    
-**Figure 1.** Most common type of dwelling sold in each ward.
+**Figure 3.** Most common type of dwelling sold in each ward.
 
-Moves can be split into under or over £250,000 transactions as shown in figure (2). It is common for properties in the UK to be sold over this threshold (35% of total), however, cheaper moves are predominant in the North and East of England as well as in Wales. Price bands should be obtained to gain more insight in this subject. 
+Moves can be split into under or over £250,000 transactions as shown in figure (4). It is common for properties in the UK to be sold over this threshold (35% of total), however, cheaper moves are predominant in the North and East of England as well as in Wales. Price bands should be obtained to gain more insight in this subject. 
 
 ![sales_price](img/sales_category_price.png)    
-**Figure 2.** Most common price threshold for households sold in each ward.
+**Figure 4.** Most common price threshold for households sold in each ward.
 
 It is more common for properties to be sold with one to three beds but in several wards properties with four or more are predominant. This pattern appears to be uniform across the UK. 
 
 ![sales_beds](img/sales_category_beds.png)    
-**Figure 3.** Most common number of bedrooms per household sold in each ward.
+**Figure 5.** Most common number of bedrooms per household sold in each ward.
 
 Results are very similar when observing rentals instead of sales. The main difference being the increased percentage of flats rented as well as a strong dominance of properties with one to three beds accounting for 80% of data. It is also worth noting that origin-destination pairs are even more skewed, with rents over £250 representing 64% of od pairs compared to 31% of the total rentals listed. 
 
 ![rentals_dwelling](img/rentals_category_dwelling.png)    
-**Figure 4.** Most common type of dwelling rented in each ward.
+**Figure 6.** Most common type of dwelling rented in each ward.
 
 ![rentals_price](img/rentals_category_price.png)    
-**Figure 5.** Most common price threshold for households rented in each ward.
+**Figure 7.** Most common price threshold for households rented in each ward.
 
 ![rentals_beds](img/rentals_category_beds.png)    
-**Figure 6.** Most common number of bedrooms per household rented in each ward.
+**Figure 8.** Most common number of bedrooms per household rented in each ward.
 
 Average distance between origin and destination varies for each type of sale.
 
@@ -102,10 +108,10 @@ Average distance between origin and destination:
 |Rural                  | 58.71 |  45.84  |
 |Urban                  | 52.06 |  44.11  |
 
-It is useful to look at the rural urban classification of wards stated by the ONS (see figure 7). This gives insight into some of the patterns seen in previous figures because cities behave differently to rural areas.
+It is useful to look at the rural urban classification of wards stated by the ONS (see figure 9). This gives insight into some of the patterns seen in previous figures because cities behave differently to rural areas.
 
 ![rural-urban_split](img/rural_urban_split.png)    
-**Figure 7.** ONS rural urban classification by ward - 2011 census.
+**Figure 9.** ONS rural urban classification by ward - 2011 census.
 
 Correlation of moves with distance:     
 
