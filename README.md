@@ -40,7 +40,7 @@ To check: numbers don't match totals. Small errors expected in % due to rounding
 As expected, reducing the data to households with a forwarding service favours more expensive moves, with around 30% increase in these rentals. The number of flats in the data also reduces significantly (10%). The changes are larger for rentals than sales, but these are relevant in both cases.
 
 ![sales_origin](img/sales_origin_total.png)    
-**Figure 1.** Number of houses listed for sale in each LAD. There is more data available in certain LADs such as Leeds, Sheffield and Cornwall. 
+**Figure 1.** Number of houses listed for sale in each LAD. There is more data available in certain LADs such as Leeds, Birmingham and Cornwall. 
 
 ![sales_net](img/sales_net_total.png)    
 **Figure 2.** Net moves (OD-sales) in each LAD. The distribution seen is quite unexpected as big cities are losing people whilst Cornwall still has a strong net movement. London has a negative internal number of moves as expected. 
