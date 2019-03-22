@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import geopandas as gpd 
 
-def uk_plot(shp_path, geo_code, df, var_name, title):
+def uk_plot(shp_path, geo_code, df, var_name, title, cmap='coolwarm'):
     "Choropleth map of the given variable."
 
     print("\nGenerating plot...")
@@ -14,10 +14,10 @@ def uk_plot(shp_path, geo_code, df, var_name, title):
     ax.axis('off')
     ax.set_title(title)
 
-    sm = plt.cm.ScalarMappable(cmap='coolwarm', norm=plt.Normalize(vmin=min(merged[str(var_name)]),vmax=max(merged[str(var_name)])))
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=plt.Normalize(vmin=min(merged[str(var_name)]),vmax=max(merged[str(var_name)])))
     sm._A = []
     fig.colorbar(sm)
-    merged.plot(column=str(var_name), cmap='coolwarm', linewidth=0.2, edgecolor='0.5', ax=ax)
+    merged.plot(column=str(var_name), cmap=cmap, linewidth=0.2, edgecolor='0.5', ax=ax)
 
 def top_10(df, var_name, title):
     "Bar chart of the top 10 wards for the given variable"
