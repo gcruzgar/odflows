@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import geopandas as gpd 
@@ -117,3 +118,14 @@ def ru_class(remap=True):
     #b.to_csv("data/rentals_distance_ru.csv")
 
     return rural_urban
+
+def Ward_to_LAD(df, df_types):
+    
+    map_df = gpd.read_file("data/shapefiles/GB_Wards_2016.shp") 
+    merged = map_df.merge(df, left_on='wd16cd', right_on=df.index, how='left')
+    merged=merged.loc[~merged['wd16cd'].str.startswith('S', na=False)] # drop Scottish wards
+
+    # aggregate to LADs
+    lad_map = pd.pivot_table(merged, values=df_types, index='lad16cd', aggfunc=np.sum)
+    
+    return lad_map 
