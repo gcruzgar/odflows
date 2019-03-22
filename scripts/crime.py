@@ -6,22 +6,26 @@ import geopandas as gpd
 import matplotlib.pyplot as plt 
 from utils import uk_plot
 
-data_path = "data/crime/2016-04/"
-file_list = listdir(data_path)
-
 LSOA_Ward = pd.read_csv("data/EW_LSOA_Ward_Lookup_2016.csv") # LSOA to Ward lookup
 
+data_path = "data/crime/"
+folder_list = listdir(data_path)
+
 crime = pd.DataFrame()
-for file_name in file_list:
+for folder_name in folder_list:
 
-    f_crime = pd.read_csv(data_path+file_name) #load crime data for sepcific file 
+    file_list = listdir(data_path+folder_name)
 
-    f_crime = f_crime[['LSOA code', 'Crime type']] # only interested in crime type and location
-    f_crime = f_crime.loc[f_crime['Crime type'] == 'Burglary'] # filter by crime type
+    print("Loading %s data..." % folder_name)
+    for file_name in file_list:
 
-    crime = pd.concat([crime, f_crime], axis=0) # join data from all files
+        f_crime = pd.read_csv(data_path+folder_name+r'/'+file_name) #load crime data for sepcific file 
 
-print(crime.head())
+        f_crime = f_crime[['LSOA code', 'Crime type']] # only interested in crime type and location
+        f_crime = f_crime.loc[f_crime['Crime type'] == 'Burglary'] # filter by crime type
+
+        crime = pd.concat([crime, f_crime], axis=0) # join data from all files
+
 crime_rate = pd.DataFrame(crime['LSOA code'].value_counts()).rename(index=str, columns={'LSOA code': 'Crime rate'}) # number of crimes per LSOA
 crime_conv = crime_rate.merge(LSOA_Ward, left_on=crime_rate.index, right_on='LSOA11CD', how='right').fillna(value=0)
 
