@@ -5,7 +5,7 @@ import pandas as pd
 from os import listdir
 import geopandas as gpd 
 import matplotlib.pyplot as plt 
-from utils import uk_plot
+from utils import uk_plot, Ward_to_LAD
 
 def main():
 
@@ -36,10 +36,16 @@ def main():
 
     crime_ward = pd.pivot_table(crime_conv, values=['Crime rate'], index='WD16CD', aggfunc=np.sum)
 
-    shp_path = "data/shapefiles/GB_Wards_2016.shp"
-    geo_code = 'wd16cd'
+    if args.lad:
+        lad_map = Ward_to_LAD(crime_ward, df_types=['Crime rate']) # aggregate to Local Authority District
+        shp_path = "data/shapefiles/GB_LAD_2016.shp"
+        geo_code = 'lad16cd'
+        uk_plot(shp_path, geo_code, lad_map, 'Crime rate', title=('average crime rate - %s' % crime_type), cmap='OrRd') # plot crime data
+    else:
+        shp_path = "data/shapefiles/GB_Wards_2016.shp"
+        geo_code = 'wd16cd'
+        uk_plot(shp_path, geo_code, crime_ward, 'Crime rate', title=('average crime rate - %s' % crime_type), cmap='OrRd') # plot crime data
 
-    uk_plot(shp_path, geo_code, crime_ward,'Crime rate', 'average crime rate - %s' % crime_type, cmap='OrRd') # plot crime data
     plt.show()
 
 if __name__ == "__main__":
@@ -50,6 +56,8 @@ if __name__ == "__main__":
         help="use rental data.")
     parser.add_argument("-c", type=str, nargs=1, default=["Burglary"], 
         help="Category to plot: 'beds', 'dwelling' or 'price'.")
+    parser.add_argument("-lad", action='store_true', 
+        help="aggregate to LAD.")
     args = parser.parse_args()
 
     main()
