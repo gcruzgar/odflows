@@ -32,28 +32,34 @@ def main():
             crime = pd.concat([crime, f_crime], axis=0) # join data from all files
 
     crime_rate = pd.DataFrame(crime['LSOA code'].value_counts()).rename(index=str, columns={'LSOA code': 'Crime rate'}) # number of crimes per LSOA
-    crime_conv = crime_rate.merge(LSOA_Ward, left_on=crime_rate.index, right_on='LSOA11CD', how='right').fillna(value=0)
+    crime_conv = crime_rate.merge(LSOA_Ward, left_on=crime_rate.index, right_on='LSOA11CD', how='right')
 
-    crime_ward = pd.pivot_table(crime_conv, values=['Crime rate'], index='WD16CD', aggfunc=np.sum)
+    crime_ward = pd.pivot_table(crime_conv, values=['Crime rate'], index='WD16CD', aggfunc=np.sum) # number of crimes per ward
 
     if args.lad:
+        oa='LAD'
         lad_map = Ward_to_LAD(crime_ward, df_types=['Crime rate']) # aggregate to Local Authority District
         shp_path = "data/shapefiles/GB_LAD_2016.shp"
         geo_code = 'lad16cd'
         uk_plot(shp_path, geo_code, lad_map, 'Crime rate', title=('average crime rate - %s' % crime_type), cmap='OrRd') # plot crime data
     else:
+        oa='ward'
         shp_path = "data/shapefiles/GB_Wards_2016.shp"
         geo_code = 'wd16cd'
         uk_plot(shp_path, geo_code, crime_ward, 'Crime rate', title=('average crime rate - %s' % crime_type), cmap='OrRd') # plot crime data
 
     plt.show()
 
+    if args.s:
+        print("Saving outputs...")
+        crime_ward.to_csv("data/crime_per_"+oa+"_2016.csv")
+
 if __name__ == "__main__":
         
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-r", action='store_true',
-        help="use rental data.")
+    parser.add_argument("-s", action='store_true',
+        help="save outputs to csv.")
     parser.add_argument("-c", type=str, nargs=1, default=["Burglary"], 
         help="Category to plot: 'beds', 'dwelling' or 'price'.")
     parser.add_argument("-lad", action='store_true', 
