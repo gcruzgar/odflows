@@ -52,7 +52,7 @@ def main():
 
     if args.s:
         print("Saving outputs...")
-        crime_ward.to_csv("data/crime_per_"+oa+"_2016.csv")
+        crime_ward.to_csv("data/"+crime_type+"_"+oa+"_2016.csv")
 
 if __name__ == "__main__":
         
