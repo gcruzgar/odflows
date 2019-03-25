@@ -26,7 +26,10 @@ def main():
             'Beds1to3', 'Beds4Plus']
 
     if args.f == 'net':
+        cmap='coolwarm'
         df = df.dropna(subset=['DestinationWardCode'])
+    else:
+        cmap='OrRd'
         
     df_dict = {
         'origin': pd.pivot_table(df, values = df_types, index = 'OriginWardCode', aggfunc=np.sum),
@@ -48,7 +51,7 @@ def main():
 
     # plots
     var_name = args.var_name
-    uk_plot(shp_path, geo_code, lad_map, var_name, '%s-flow - %s %s' % (target, var_name, rs), cmap='OrRd')
+    uk_plot(shp_path, geo_code, lad_map, var_name, '%s-flow - %s %s' % (target, var_name, rs), cmap)
 
     # lad category plot
     cat = args.c[0]
