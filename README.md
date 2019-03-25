@@ -40,10 +40,10 @@ To check: numbers don't match totals. Small errors expected in % due to rounding
 As expected, reducing the data to households with a forwarding service favours more expensive moves, with around 30% increase in these rentals. The number of flats in the data also reduces significantly (10%). The changes are larger for rentals than sales, but these are relevant in both cases.
 
 ![sales_origin](img/sales_origin_total.png)    
-**Figure 1.** Number of houses listed for sale in each LAD. There is more data available in certain LADs such as Leeds, Birmingham and Cornwall. 
+**Figure 1.** Number of houses listed for sale in each LAD. There is a large number of moves in the dataset across England and Wales, although more data is available in certain LADs such as Leeds, Birmingham and Cornwall. 
 
 ![sales_net](img/sales_net_total.png)    
-**Figure 2.** Net moves (OD-sales) in each LAD. The distribution seen is quite unexpected as big cities are losing people whilst Cornwall still has a strong net movement. London has a negative internal number of moves as expected. 
+**Figure 2.** Net moves (OD-sales) in each LAD. The distribution seen is quite unexpected as big cities are losing people whilst Cornwall still has a strong net movement. London has a negative internal number of moves as expected. The differences to migration flows seen in ONS data, for example, could be due to the fact forwarding address is a paid service. The pattern observed here could indicate more affluent people or perhaphs larger families are moving out of big cities towards suburbs or the countryside, however, this behaviour should be investigated further.
 
 We can compare data between wards to obtain general trends in the data. For example, in figure (3) we can see the most frequent type of dwelling sold in each ward. Although terraced houses are the most common property sold across the UK, these concentrate mainly in urban areas whilst most wards have a higher number of detached properties sold. It is interesting to note that Greater London has a significant number of flats being sold, being more common that terraced.
 
@@ -132,9 +132,9 @@ Overall, there is a negative correlation between moves and distance. People are 
 
 It is also interesting to note the different behaviours experienced by household sales originating from a rural area compared to an urban one. The former has a much larger tendency towards selling detached housing whilst the latter sells more terraced and semi-detached. As expected, the number of flats sold is significantly larger for urban areas. There is also a larger discrepancy in number of beds for urban sales comapred to rural ones.
 
-| Sales - in   | Rural          | Urban          |
-|--------------|---------------:|---------------:|
-|Total         | 55,287         | 254,114        |
+| Sales - in   | Rural          | Urban           |
+|--------------|---------------:|----------------:|
+|Total         | 55,287         | 254,114         |
 |Detached      | 28,421 (51.41%)|  64,293 (25.30%)|
 |Terraced      | 10,964 (19.83%)|  79,722 (31.37%)|
 |SemiDetached  | 14,418 (26.08%)|  79,258 (31.19%)|
@@ -187,3 +187,8 @@ The same method can be used for rentals. Note the huge increase in flats compare
 |RentOver250        |   5,103  (28.52%) | 35,638 (39.43%) |
 |Beds1to3           |  14,125  (78.95%) | 76,686 (84.85%) |
 |Beds4Plus          |   3,537  (19.77%) | 12,159 (13.45%) |
+
+It is also possible to aggregate data further, into Local Authority Districts (LADs). This way some finer detail is lost but other patterns might become visible. For example, the most common type of dwelling sold in each LAD (figure 10) hints towards different behaviour in more expensive moves in the North compared to the South as well as the difference between inner and outer London.
+
+![sales_dwelling_lad](img/sales_category_dwelling_lad.png)    
+**Figure 3.** Most common type of dwelling sold in each LAD.
