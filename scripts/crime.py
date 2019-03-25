@@ -39,11 +39,15 @@ def main():
     if args.lad:
         oa='LAD'
         lad_map = Ward_to_LAD(crime_ward, df_types=['Crime rate']) # aggregate to Local Authority District
+        output_df = lad_map
+
         shp_path = "data/shapefiles/GB_LAD_2016.shp"
         geo_code = 'lad16cd'
         uk_plot(shp_path, geo_code, lad_map, 'Crime rate', title=('average crime rate - %s' % crime_type), cmap='OrRd') # plot crime data
     else:
         oa='ward'
+        output_df = crime_ward
+
         shp_path = "data/shapefiles/GB_Wards_2016.shp"
         geo_code = 'wd16cd'
         uk_plot(shp_path, geo_code, crime_ward, 'Crime rate', title=('average crime rate - %s' % crime_type), cmap='OrRd') # plot crime data
@@ -52,7 +56,7 @@ def main():
 
     if args.s:
         print("Saving outputs...")
-        crime_ward.to_csv("data/"+crime_type+"_"+oa+"_2016.csv")
+        output_df.to_csv("data/"+crime_type+"_"+oa+"_2016.csv")
 
 if __name__ == "__main__":
         
