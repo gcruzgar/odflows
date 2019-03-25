@@ -48,7 +48,7 @@ def main():
 
     # plots
     var_name = args.var_name
-    uk_plot(shp_path, geo_code, lad_map, var_name, '%s-flow - %s %s' % (target, var_name, rs))
+    uk_plot(shp_path, geo_code, lad_map, var_name, '%s-flow - %s %s' % (target, var_name, rs), cmap='OrRd')
 
     # lad category plot
     cat = args.c[0]
