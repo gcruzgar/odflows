@@ -22,31 +22,39 @@ def main():
 
     factor = args.c[0]
     factor = factor.title()
-    print(factor)
 
     factors = {
         'Crime': pd.read_csv("data/Burglary_ward_2016.csv").set_index('WD16CD').rename(index=str, columns={'Crime rate': 'Crime'}),
         'Green': green_space().rename(index=str, columns={'green900_decile': 'Green'})
     }
 
-    df = factors[factor]
+    factor_df = factors[factor]
 
-    sales = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t') # load sales data
+    if args.r:
+        r = 'Rentals'
+        moves_df = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t') # load rental data
+        var_list=['NumberOfRentals', 'RentUnder250', 'RentOver250',
+            'Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow',
+            'PropertyTypeUnknown', 'Beds1to3', 'Beds4Plus', factor+' difference']
+    else:
+        r = 'Sales'    
+        moves_df = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t') # load sales data
+        var_list = ['NumberOfMoves', 'MovesUnder250k', 'MovesOver250k',
+            'Terraced', 'Flat', 'SemiDetached', 'Detached',
+            'Beds1to3', 'Beds4Plus', factor+' difference']
 
-    merged = sales.merge(df, left_on='OriginWardCode', right_on=df.index) # create new column with factor value at origin ward
+    print(r)
+    print("Attractiveness factor: %s" % factor)
+
+    merged = moves_df.merge(factor_df, left_on='OriginWardCode', right_on=factor_df.index) # create new column with factor value at origin ward
     merged.rename(index=str, columns={factor: 'Origin'+factor}, inplace=True) # rename column
 
-    merged = merged.merge(df, left_on='DestinationWardCode', right_on=df.index) # create new column with factor value at destination ward
+    merged = merged.merge(factor_df, left_on='DestinationWardCode', right_on=factor_df.index) # create new column with factor value at destination ward
     merged.rename(index=str, columns={factor: 'Destination'+factor}, inplace=True) # rename column
 
     merged[factor+' difference'] = merged['Destination'+factor] - merged['Origin'+factor] # create new column with difference between destination and origin
 
-    df_types = ['NumberOfMoves', 'MovesUnder250k', 'MovesOver250k', 
-        'Terraced', 'Flat', 'SemiDetached', 'Detached',
-        'Beds1to3', 'Beds4Plus',
-        factor+' difference']
-
-    df_corr = merged[df_types].corr()
+    df_corr = merged[var_list].corr()
     print(df_corr[factor+' difference'].round(3)[:-1])
 
 if __name__ == "__main__":
