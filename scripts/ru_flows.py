@@ -3,7 +3,7 @@ import argparse
 import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt 
-from utils import categ, categ_plot, ru_class
+from utils import categ, categ_plot, ru_class, load_moves
 
 def main():
     """
@@ -16,20 +16,7 @@ def main():
     The same can be done but filtering moves based on the destination being rural and calculating total flows out of each ward.
     """
 
-    if args.r:
-        print("Loading rental data...")
-        df = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t')
-        df.rename(index=str, columns={'NumberOfRentals': 'Total'}, inplace=True)
-        df_types = ['Total', 'RentUnder250', 'RentOver250',
-            'Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow', 'PropertyTypeUnknown', 
-            'Beds1to3', 'Beds4Plus']
-    else:
-        print("Loading sales data...")
-        df = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t')
-        df.rename(index=str, columns={'NumberOfMoves': 'Total'}, inplace=True)   
-        df_types = ['Total', 'MovesUnder250k', 'MovesOver250k', 
-            'Terraced', 'Flat', 'SemiDetached', 'Detached',
-            'Beds1to3', 'Beds4Plus']
+    df, df_types, rs = load_moves(r=args.r)
 
     if args.of:
         in_out = 'destination'

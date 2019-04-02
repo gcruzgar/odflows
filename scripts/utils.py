@@ -129,3 +129,26 @@ def Ward_to_LAD(df, df_types):
     lad_map = pd.pivot_table(merged, values=df_types, index='lad16cd', aggfunc=np.sum)
     
     return lad_map 
+
+def load_moves(r=False):
+    """ Load sales or rental data.
+    Note: the path to data files might need to be changed depedning on how data is stored."""
+
+    if r:
+        rs = 'rentals'
+        print("Loading rental data...")
+        df = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t')
+        df.rename(index=str, columns={'NumberOfRentals': 'Total'}, inplace=True)
+        df_types = ['Total', 'RentUnder250', 'RentOver250',
+            'Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow', 'PropertyTypeUnknown', 
+            'Beds1to3', 'Beds4Plus']
+    else:
+        rs = 'sales'
+        print("Loading sales data...")
+        df = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t')
+        df.rename(index=str, columns={'NumberOfMoves': 'Total'}, inplace=True)   
+        df_types = ['Total', 'MovesUnder250k', 'MovesOver250k', 
+            'Terraced', 'Flat', 'SemiDetached', 'Detached',
+            'Beds1to3', 'Beds4Plus']
+
+    return df, df_types, rs

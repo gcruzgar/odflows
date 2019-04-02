@@ -4,26 +4,11 @@ import numpy as np
 import pandas as pd 
 import geopandas as gpd 
 import matplotlib.pyplot as plt 
-from utils import uk_plot, categ, categ_plot
+from utils import uk_plot, categ, categ_plot, load_moves
 
 def main():
 
-    if args.r:
-        rs = 'rentals'
-        print("Loading rental data...")
-        df = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t')
-        df.rename(index=str, columns={'NumberOfRentals': 'Total'}, inplace=True)
-        df_types = ['Total', 'RentUnder250', 'RentOver250',
-            'Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow', 'PropertyTypeUnknown', 
-            'Beds1to3', 'Beds4Plus']
-    else:
-        rs = 'sales'
-        print("Loading sales data...")
-        df = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t')
-        df.rename(index=str, columns={'NumberOfMoves': 'Total'}, inplace=True)   
-        df_types = ['Total', 'MovesUnder250k', 'MovesOver250k', 
-            'Terraced', 'Flat', 'SemiDetached', 'Detached',
-            'Beds1to3', 'Beds4Plus']
+    df, df_types, rs = load_moves(r=args.r)
 
     if args.f == 'net':
         cmap='coolwarm'

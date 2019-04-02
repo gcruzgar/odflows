@@ -4,28 +4,13 @@ import numpy as np
 import pandas as pd 
 import geopandas as gpd 
 import matplotlib.pyplot as plt 
-from utils import uk_plot, top_10, categ, categ_plot
+from utils import uk_plot, top_10, categ, categ_plot, load_moves
 
 def main():
 
     var_name = args.var_name
-    
-    if args.r:
-        rs = 'rentals'
-        print("Loading rental data...")
-        df = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t').dropna(subset=['DestinationWardCode'])
-        df.rename(index=str, columns={'NumberOfRentals': 'Total'}, inplace=True)
-        df_types = ['Total', 'RentUnder250', 'RentOver250',
-            'Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow', 'PropertyTypeUnknown', 
-            'Beds1to3', 'Beds4Plus']
-    else:
-        rs = 'sales'
-        print("Loading sales data...")
-        df = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t').dropna(subset=['DestinationWardCode'])
-        df.rename(index=str, columns={'NumberOfMoves': 'Total'}, inplace=True)   
-        df_types = ['Total', 'MovesUnder250k', 'MovesOver250k', 
-            'Terraced', 'Flat', 'SemiDetached', 'Detached',
-            'Beds1to3', 'Beds4Plus']
+    df, df_types, rs = load_moves(r=args.r) # Load flow data
+    df.dropna(subset=['DestinationWardCode'], inplace=True) # Only keep data with both origin and destination
 
     # Note: dropna is used to only keep available od pairs
 

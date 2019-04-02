@@ -2,6 +2,7 @@
 import pandas as pd 
 import numpy as np
 import argparse
+from utils import load_moves
 
 def green_space(g_type='green900_decile'):
     """Load green space data. Aggregates LSOA data to Ward. Can use either raw value (m-squared) or deciles. 
@@ -30,20 +31,9 @@ def main():
 
     factor_df = factors[factor]
 
-    if args.r:
-        r = 'Rentals'
-        moves_df = pd.read_csv("data/ZooplaRentals_Aggregate_NikLomax.txt", sep='\t') # load rental data
-        var_list=['NumberOfRentals', 'RentUnder250', 'RentOver250',
-            'Terraced', 'Flat', 'SemiDetached', 'Detached', 'Bungalow',
-            'PropertyTypeUnknown', 'Beds1to3', 'Beds4Plus', factor+' difference']
-    else:
-        r = 'Sales'    
-        moves_df = pd.read_csv("data/ZooplaSales_Aggregate_NikLomax.txt", sep='\t') # load sales data
-        var_list = ['NumberOfMoves', 'MovesUnder250k', 'MovesOver250k',
-            'Terraced', 'Flat', 'SemiDetached', 'Detached',
-            'Beds1to3', 'Beds4Plus', factor+' difference']
+    moves_df, var_list, rs = load_moves(r=args.r) # Load flow data
+    var_list.append(factor+' difference')
 
-    print(r)
     print("Attractiveness factor: %s" % factor)
 
     merged = moves_df.merge(factor_df, left_on='OriginWardCode', right_on=factor_df.index) # create new column with factor value at origin ward
