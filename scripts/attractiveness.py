@@ -31,21 +31,39 @@ def main():
 
     factor_df = factors[factor]
 
+    ##v1 - number of moves correlated with the difference of factor at origin and destination
+    # moves_df, var_list, rs = load_moves(r=args.r) # Load flow data
+    # var_list.append(factor+' difference')
+
+    # print("Attractiveness factor: %s" % factor)
+
+    # merged = moves_df.merge(factor_df, left_on='OriginWardCode', right_on=factor_df.index) # create new column with factor value at origin ward
+    # merged.rename(index=str, columns={factor: 'Origin'+factor}, inplace=True) # rename column
+
+    # merged = merged.merge(factor_df, left_on='DestinationWardCode', right_on=factor_df.index) # create new column with factor value at destination ward
+    # merged.rename(index=str, columns={factor: 'Destination'+factor}, inplace=True) # rename column
+
+    # merged[factor+' difference'] = merged['Destination'+factor] - merged['Origin'+factor] # create new column with difference between destination and origin
+
+    # var_list.append(factor+' difference')
+    # df_corr = merged[var_list].corr()
+    # print(df_corr[factor+' difference'].round(3)[:-1])
+
+    #v2 - net moves correlated with total crime rate at each ward
     moves_df, var_list, rs = load_moves(r=args.r) # Load flow data
-    var_list.append(factor+' difference')
+    moves_df.dropna(subset=['DestinationWardCode'], inplace=True) # Only keep data with both origin and destination
 
-    print("Attractiveness factor: %s" % factor)
+    df_dict = {
+        'origin': pd.pivot_table(moves_df, values = var_list, index = 'OriginWardCode', aggfunc=np.sum),
+        'destination': pd.pivot_table(moves_df, values = var_list, index = 'DestinationWardCode', aggfunc=np.sum),
+    }
+    df_dict['net'] = df_dict['destination'] - df_dict['origin']
 
-    merged = moves_df.merge(factor_df, left_on='OriginWardCode', right_on=factor_df.index) # create new column with factor value at origin ward
-    merged.rename(index=str, columns={factor: 'Origin'+factor}, inplace=True) # rename column
+    merged = df_dict['net'].merge(factor_df, left_on=df_dict['net'].index, right_on=factor_df.index).set_index('key_0')
 
-    merged = merged.merge(factor_df, left_on='DestinationWardCode', right_on=factor_df.index) # create new column with factor value at destination ward
-    merged.rename(index=str, columns={factor: 'Destination'+factor}, inplace=True) # rename column
-
-    merged[factor+' difference'] = merged['Destination'+factor] - merged['Origin'+factor] # create new column with difference between destination and origin
-
+    var_list.append(factor)
     df_corr = merged[var_list].corr()
-    print(df_corr[factor+' difference'].round(3)[:-1])
+    print(df_corr[factor].round(3)[:-1])
 
 if __name__ == "__main__":
     
