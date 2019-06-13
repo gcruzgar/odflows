@@ -1,7 +1,5 @@
 # odflows
 
-This repository is unfished. WIP
-
 Exploratory analysis of dwelling rentals and sales in England and Wales.
 
 Number of sales and rentals in dataset, percentage of total in brackets:
